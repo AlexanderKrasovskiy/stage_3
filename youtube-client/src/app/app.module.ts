@@ -18,13 +18,10 @@ import { SearchDetailsComponent } from './main/search/search-details/search-deta
     AuthComponent,
     SearchResultsComponent,
     SearchCardComponent,
-    SearchDetailsComponent
+    SearchDetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
