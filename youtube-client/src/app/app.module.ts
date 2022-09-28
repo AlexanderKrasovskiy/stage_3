@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { FiltersComponent } from './header/filters/filters.component';
 import { AuthComponent } from './main/auth/auth.component';
-import { SearchResultsComponent } from './main/search/search-results/search-results.component';
+import { SearchListComponent } from './main/search/search-list/search-list.component';
 import { SearchCardComponent } from './main/search/search-card/search-card.component';
 import { SearchDetailsComponent } from './main/search/search-details/search-details.component';
 
@@ -16,7 +16,7 @@ import { SearchDetailsComponent } from './main/search/search-details/search-deta
     HeaderComponent,
     FiltersComponent,
     AuthComponent,
-    SearchResultsComponent,
+    SearchListComponent,
     SearchCardComponent,
     SearchDetailsComponent,
   ],
