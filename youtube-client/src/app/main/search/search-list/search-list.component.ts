@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { YtResponse } from '../models/search-response.model';
+import { YtItem } from '../models/search-item.model';
+import data from '../../../services/response.json';
 
 @Component({
   selector: 'app-search-list',
@@ -6,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent implements OnInit {
+  public response: YtResponse = data;
+  public items: YtItem[] = data.items;
+
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor, @typescript-eslint/no-empty-function
   constructor() {}
 

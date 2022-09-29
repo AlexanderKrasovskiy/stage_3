@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { YtItem } from '../models/search-item.model';
 
 @Component({
   selector: 'app-search-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-card.component.scss'],
 })
 export class SearchCardComponent implements OnInit {
+  @Input() item?: YtItem;
+
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor, @typescript-eslint/no-empty-function
   constructor() {}
 

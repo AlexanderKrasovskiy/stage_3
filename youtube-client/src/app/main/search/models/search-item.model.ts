@@ -7,7 +7,7 @@ export type YtItem = {
 };
 
 type Snippet = {
-  publishedAt: Date;
+  publishedAt: string;
   channelId: string;
   title: string;
   description: string;
