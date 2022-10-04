@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material/material.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FiltersComponent } from './filters/filters.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { SearchCardComponent } from './search-list/search-card/search-card.component';
-import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { MaterialModule } from './material/material.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule,
   ],
   providers: [],
