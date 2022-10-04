@@ -5,20 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FiltersComponent } from './filters/filters.component';
-import { AuthComponent } from './auth/auth.component';
-import { SearchListComponent } from './search/search-list/search-list.component';
-import { SearchCardComponent } from './search/search-card/search-card.component';
-import { SearchDetailsComponent } from './search/search-details/search-details.component';
+import { SearchListComponent } from './search-list/search-list.component';
+import { SearchCardComponent } from './search-list/search-card/search-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FiltersComponent,
-    AuthComponent,
     SearchListComponent,
     SearchCardComponent,
-    SearchDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
