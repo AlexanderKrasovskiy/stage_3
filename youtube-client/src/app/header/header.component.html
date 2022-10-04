@@ -1,1 +1,28 @@
-<p>header works!</p>
+<div class="header">
+  <mat-grid-list cols="4" rowHeight="80px" class="container">
+    <mat-grid-tile></mat-grid-tile>
+
+    <mat-grid-tile colspan="2">
+      <div class="logo"></div>
+
+      <form class="search-form">
+        <mat-form-field appearance="standard">
+          <mat-label>Search</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <button mat-raised-button color="primary">Search</button>
+      </form>
+
+      <button mat-mini-fab color="primary">
+        <mat-icon>tune</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <span class="user-name">Your Name</span>
+      <button mat-mini-fab color="primary">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
