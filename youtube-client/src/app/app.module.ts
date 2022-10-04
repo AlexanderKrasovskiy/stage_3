@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FiltersComponent } from './filters/filters.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { SearchCardComponent } from './search-list/search-card/search-card.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,12 @@ import { SearchCardComponent } from './search-list/search-card/search-card.compo
     SearchListComponent,
     SearchCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
