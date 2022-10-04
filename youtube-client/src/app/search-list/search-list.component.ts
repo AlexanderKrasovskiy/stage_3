@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { YtResponse } from '../models/search-response.model';
-import { YtItem } from '../models/search-item.model';
-import data from '../../services/response.json';
+import { YtResponse } from './models/search-response.model';
+import { YtItem } from './models/search-item.model';
+import data from './mock-response.json';
 
 @Component({
   selector: 'app-search-list',
