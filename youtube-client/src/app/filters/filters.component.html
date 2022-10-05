@@ -1,1 +1,18 @@
-<p>filters works!</p>
+<div class="filters">
+  <mat-grid-list cols="4" rowHeight="50px" class="container">
+    <mat-grid-tile></mat-grid-tile>
+
+    <mat-grid-tile colspan="2">
+      <span class="filters-title">Sorting by:</span>
+
+      <button mat-button color="primary">date</button>
+      <button mat-button color="primary">count of views</button>
+      <label mat-button color="primary" class="input-label">
+        by word or sentance
+        <input type="text" />
+      </label>
+    </mat-grid-tile>
+
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+</div>
