@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
 })
-export class FiltersComponent {}
+export class FiltersComponent {
+  public show = false;
+
+  public toggleVisibility() {
+    this.show = !this.show;
+  }
+}
