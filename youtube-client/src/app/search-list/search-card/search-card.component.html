@@ -1,22 +1,35 @@
 <mat-card>
-  <img mat-card-image src="https://i.ytimg.com/vi/YN8zNnV0sK8/mqdefault.jpg" />
+  <img mat-card-image [src]="item.snippet.thumbnails.medium.url" />
   <mat-card-actions>
     <div class="card-stats">
       <span title="views"
-        ><mat-icon fontIcon="visibility"></mat-icon>33265</span
+        ><mat-icon fontIcon="visibility"></mat-icon>
+        <div>{{ item.statistics.viewCount }}</div></span
       >
-      <span title="likes"><mat-icon fontIcon="thumb_up"></mat-icon>1173</span>
+      <span title="likes"
+        ><mat-icon fontIcon="thumb_up"></mat-icon>
+        <div>{{ item.statistics.likeCount }}</div></span
+      >
       <span title="dislikes"
-        ><mat-icon fontIcon="thumb_down"></mat-icon>26</span
+        ><mat-icon fontIcon="thumb_down"></mat-icon>
+        <div>{{ item.statistics.dislikeCount }}</div></span
       >
-      <span title="comments"><mat-icon fontIcon="forum"></mat-icon>170</span>
+      <span title="comments"
+        ><mat-icon fontIcon="forum"></mat-icon>
+        <div>{{ item.statistics.commentCount }}</div></span
+      >
     </div>
   </mat-card-actions>
-  <mat-card-title>Angular 8 - Быстрый курс за 60 минут</mat-card-title>
+  <mat-card-title class="card-title">{{
+    (item.snippet.title | slice: 0:33) + '...'
+  }}</mat-card-title>
   <div class="button-container">
     <button mat-raised-button color="primary">more...</button>
   </div>
   <mat-card-footer>
-    <div class="border-red"></div>
+    <div
+      class="border"
+      appBorderHighlight
+      [date]="item.snippet.publishedAt"></div>
   </mat-card-footer>
 </mat-card>

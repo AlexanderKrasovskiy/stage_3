@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { YtResponse } from './models/search-response.model';
 import { YtItem } from './models/search-item.model';
 import data from './mock-response.json';
 
@@ -9,6 +8,10 @@ import data from './mock-response.json';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent {
-  public response: YtResponse = data;
-  public items: YtItem[] = data.items;
+  public items?: YtItem[];
+
+  getResponse(query: string) {
+    console.log(query);
+    this.items = data.items;
+  }
 }

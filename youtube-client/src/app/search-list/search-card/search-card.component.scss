@@ -3,8 +3,10 @@
 }
 
 .card-stats {
+  width: 100%;
   display: flex;
-  column-gap: 16px;
+  justify-content: space-around;
+  // column-gap: 16px;
 }
 
 .mat-card-title {
@@ -17,22 +19,6 @@
   padding: 15px;
 }
 
-.border-red {
+.border {
   height: 5px;
-  background-color: #eb5757;
-}
-
-.border-green {
-  height: 5px;
-  background-color: #27ae60;
-}
-
-.border-blue {
-  height: 5px;
-  background-color: #2f80ed;
-}
-
-.border-yellow {
-  height: 5px;
-  background-color: #f2c94c;
 }

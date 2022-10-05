@@ -1,7 +1,7 @@
-<div class="results-list">
+<div class="results-list" *ngIf="items">
   <mat-grid-list cols="4" rowHeight="385px" gutterSize="30px" class="container">
-    <mat-grid-tile>
-      <app-search-card></app-search-card>
+    <mat-grid-tile *ngFor="let item of items">
+      <app-search-card [item]="item"></app-search-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
