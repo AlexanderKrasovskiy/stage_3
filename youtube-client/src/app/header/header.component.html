@@ -5,17 +5,20 @@
     <mat-grid-tile colspan="2">
       <div class="logo"></div>
 
-      <form class="search-form">
+      <form
+        #searchForm
+        class="search-form"
+        (submit)="onSearch(); searchForm.reset()">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
-          <input matInput />
+          <input matInput name="query" [(ngModel)]="query" />
         </mat-form-field>
 
         <button mat-raised-button color="primary">Search</button>
       </form>
 
-      <button mat-mini-fab color="primary">
-        <mat-icon>tune</mat-icon>
+      <button mat-mini-fab color="primary" (click)="toggleFilters()">
+        <mat-icon fontIcon="tune"></mat-icon>
       </button>
     </mat-grid-tile>
 
@@ -23,7 +26,7 @@
       <span class="user-name">Your Name</span>
 
       <button mat-mini-fab color="primary">
-        <mat-icon>account_circle</mat-icon>
+        <mat-icon fontIcon="account_circle"></mat-icon>
       </button>
     </mat-grid-tile>
   </mat-grid-list>
