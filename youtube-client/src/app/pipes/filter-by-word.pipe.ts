@@ -9,7 +9,7 @@ export class FilterByWordPipe implements PipeTransform {
     if (!word) return items;
 
     return items.filter((item) =>
-      item.snippet.title.toLowerCase().includes(word),
+      item.snippet.title.toLowerCase().includes(word.toLowerCase()),
     );
   }
 }
