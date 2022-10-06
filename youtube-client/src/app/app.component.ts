@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { FiltersComponent } from './filters/filters.component';
-import { SearchListComponent } from './search-list/search-list.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
 
 @Component({
   selector: 'app-root',
