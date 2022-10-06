@@ -18,7 +18,7 @@ export class HeaderComponent {
   @ViewChild('searchForm') searchForm!: ElementRef<HTMLFormElement>;
 
   public onSearch() {
-    if (!this.query.trim()) return;
+    if (!this.query || !this.query.trim()) return;
 
     this.query = this.query.trim().toLowerCase();
     this.search.emit(this.query);
