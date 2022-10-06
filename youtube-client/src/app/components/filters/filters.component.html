@@ -11,7 +11,10 @@
       </button>
       <label mat-button color="primary" class="input-label">
         by word or sentence
-        <input type="text" />
+        <input
+          #filterInput
+          type="text"
+          (input)="setWordFilter(filterInput.value)" />
       </label>
     </mat-grid-tile>
 

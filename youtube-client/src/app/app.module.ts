@@ -13,6 +13,7 @@ import { SearchCardComponent } from './components/search-list/search-card/search
 import { BorderHighlightDirective } from './directives/border-highlight.directive';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
+import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
     BorderHighlightDirective,
     SortByDatePipe,
     SortByViewsPipe,
+    FilterByWordPipe,
   ],
   imports: [
     BrowserModule,

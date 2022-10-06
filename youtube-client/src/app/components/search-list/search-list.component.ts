@@ -11,6 +11,7 @@ export class SearchListComponent {
   public items?: YtItem[];
   public dateOrder?: 'oldToNew' | 'newToOld';
   public viewsOrder?: 'ascending' | 'descending';
+  public word?: string;
 
   getResponse(query: string) {
     console.log(query);
@@ -23,5 +24,9 @@ export class SearchListComponent {
 
   setViewsOrder(order: 'ascending' | 'descending') {
     this.viewsOrder = order;
+  }
+
+  setWordFilter(word: string) {
+    this.word = word;
   }
 }

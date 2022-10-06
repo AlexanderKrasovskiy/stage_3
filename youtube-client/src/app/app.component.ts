@@ -26,4 +26,8 @@ export class AppComponent {
   setViewsOrder(order: 'ascending' | 'descending') {
     this.search.setViewsOrder(order);
   }
+
+  setWordFilter(word: string) {
+    this.search.setWordFilter(word);
+  }
 }

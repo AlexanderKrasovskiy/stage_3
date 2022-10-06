@@ -11,6 +11,7 @@ export class FiltersComponent {
   private viewsSort?: 'ascending' | 'descending';
   @Output() dateOrder = new EventEmitter<'oldToNew' | 'newToOld'>();
   @Output() viewsOrder = new EventEmitter<'ascending' | 'descending'>();
+  @Output() wordFilter = new EventEmitter<string>();
 
   public toggleVisibility() {
     this.show = !this.show;
@@ -36,5 +37,9 @@ export class FiltersComponent {
       this.viewsSort = 'ascending';
     }
     this.viewsOrder.emit(this.viewsSort);
+  }
+
+  setWordFilter(value: string) {
+    this.wordFilter.emit(value);
   }
 }
