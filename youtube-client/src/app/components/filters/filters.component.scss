@@ -2,6 +2,26 @@
   background-color: #e5e5e5;
 }
 
+.filters__conteiner {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.side-block {
+  flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-block {
+  flex-basis: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .filters-title {
   color: #929292;
 }

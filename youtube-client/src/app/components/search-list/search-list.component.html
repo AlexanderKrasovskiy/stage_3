@@ -1,13 +1,10 @@
-<div class="results-list" *ngIf="items">
-  <mat-grid-list cols="4" rowHeight="385px" gutterSize="30px" class="container">
-    <mat-grid-tile
-      *ngFor="
-        let item of items
-          | sortByDate: dateOrder
-          | sortByViews: viewsOrder
-          | filterByWord: word
-      ">
-      <app-search-card [item]="item"></app-search-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div class="container results-list" *ngIf="items">
+  <app-search-card
+    *ngFor="
+      let item of items
+        | sortByDate: dateOrder
+        | sortByViews: viewsOrder
+        | filterByWord: word
+    "
+    [item]="item"></app-search-card>
 </div>

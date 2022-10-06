@@ -1,8 +1,8 @@
 <div class="filters" *ngIf="show">
-  <mat-grid-list cols="4" rowHeight="50px" class="container">
-    <mat-grid-tile></mat-grid-tile>
+  <div class="container filters__conteiner">
+    <div class="side-block"></div>
 
-    <mat-grid-tile colspan="2">
+    <div class="center-block">
       <span class="filters-title">Sorting by:</span>
 
       <button mat-button color="primary" (click)="setDateOrder()">date</button>
@@ -14,8 +14,8 @@
         type="text"
         placeholder="by word or sentence"
         (input)="setWordFilter(filterInput.value)" />
-    </mat-grid-tile>
+    </div>
 
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
+    <div class="side-block"></div>
+  </div>
 </div>
