@@ -1,5 +1,5 @@
 <app-header
   (toggle)="toggleFilters()"
   (search)="getResponse($event)"></app-header>
-<app-filters></app-filters>
+<app-filters (dateOrder)="setDateOrder($event)"></app-filters>
 <app-search-list></app-search-list>

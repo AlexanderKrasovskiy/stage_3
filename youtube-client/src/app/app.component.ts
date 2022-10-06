@@ -18,4 +18,8 @@ export class AppComponent {
   getResponse(query: string) {
     this.search.getResponse(query);
   }
+
+  setDateOrder(value: 'oldToNew' | 'newToOld') {
+    this.search.setDateOrder(value);
+  }
 }

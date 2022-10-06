@@ -9,9 +9,14 @@ import data from './mock-response.json';
 })
 export class SearchListComponent {
   public items?: YtItem[];
+  public dateOrder?: 'oldToNew' | 'newToOld';
 
   getResponse(query: string) {
     console.log(query);
     this.items = data.items;
+  }
+
+  setDateOrder(order: 'oldToNew' | 'newToOld') {
+    this.dateOrder = order;
   }
 }

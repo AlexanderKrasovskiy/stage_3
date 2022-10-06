@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filters',
@@ -7,8 +7,19 @@ import { Component } from '@angular/core';
 })
 export class FiltersComponent {
   public show = false;
+  private dateSort?: 'oldToNew' | 'newToOld';
+  @Output() dateOrder = new EventEmitter<'oldToNew' | 'newToOld'>();
 
   public toggleVisibility() {
     this.show = !this.show;
+  }
+
+  setDateOrder() {
+    if (this.dateSort === 'oldToNew') {
+      this.dateSort = 'newToOld';
+    } else {
+      this.dateSort = 'oldToNew';
+    }
+    this.dateOrder.emit(this.dateSort);
   }
 }
