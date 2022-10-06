@@ -11,9 +11,10 @@ export class HeaderComponent {
   @Output() public toggle = new EventEmitter();
 
   public onSearch() {
+    this.query = this.query.trim();
+
     if (this.query) {
-      // console.log(this.query);
-      this.search.emit(this.query);
+      this.search.emit(this.query.toLowerCase());
     }
   }
 
