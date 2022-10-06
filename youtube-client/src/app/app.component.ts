@@ -19,7 +19,11 @@ export class AppComponent {
     this.search.getResponse(query);
   }
 
-  setDateOrder(value: 'oldToNew' | 'newToOld') {
-    this.search.setDateOrder(value);
+  setDateOrder(order: 'oldToNew' | 'newToOld') {
+    this.search.setDateOrder(order);
+  }
+
+  setViewsOrder(order: 'ascending' | 'descending') {
+    this.search.setViewsOrder(order);
   }
 }

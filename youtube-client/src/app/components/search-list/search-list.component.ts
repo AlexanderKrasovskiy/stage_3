@@ -10,6 +10,7 @@ import data from './mock-response.json';
 export class SearchListComponent {
   public items?: YtItem[];
   public dateOrder?: 'oldToNew' | 'newToOld';
+  public viewsOrder?: 'ascending' | 'descending';
 
   getResponse(query: string) {
     console.log(query);
@@ -18,5 +19,9 @@ export class SearchListComponent {
 
   setDateOrder(order: 'oldToNew' | 'newToOld') {
     this.dateOrder = order;
+  }
+
+  setViewsOrder(order: 'ascending' | 'descending') {
+    this.viewsOrder = order;
   }
 }

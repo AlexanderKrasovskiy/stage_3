@@ -12,6 +12,7 @@ import { SearchListComponent } from './components/search-list/search-list.compon
 import { SearchCardComponent } from './components/search-list/search-card/search-card.component';
 import { BorderHighlightDirective } from './directives/border-highlight.directive';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SortByDatePipe } from './pipes/sort-by-date.pipe';
     SearchCardComponent,
     BorderHighlightDirective,
     SortByDatePipe,
+    SortByViewsPipe,
   ],
   imports: [
     BrowserModule,
