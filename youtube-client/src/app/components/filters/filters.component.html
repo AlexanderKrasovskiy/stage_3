@@ -9,13 +9,11 @@
       <button mat-button color="primary" (click)="setViewsOrder()">
         count of views
       </button>
-      <label mat-button color="primary" class="input-label">
-        by word or sentence
-        <input
-          #filterInput
-          type="text"
-          (input)="setWordFilter(filterInput.value)" />
-      </label>
+      <input
+        #filterInput
+        type="text"
+        placeholder="by word or sentence"
+        (input)="setWordFilter(filterInput.value)" />
     </mat-grid-tile>
 
     <mat-grid-tile></mat-grid-tile>
