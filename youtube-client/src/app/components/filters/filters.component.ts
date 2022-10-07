@@ -13,11 +13,11 @@ export class FiltersComponent {
   @Output() private viewsOrder = new EventEmitter<'ascending' | 'descending'>();
   @Output() private wordFilter = new EventEmitter<string>();
 
-  public toggleVisibility() {
+  public toggleVisibility(): void {
     this.show = !this.show;
   }
 
-  public setDateOrder() {
+  public setDateOrder(): void {
     this.viewsSort = undefined;
 
     if (this.dateSort === 'oldToNew') {
@@ -25,10 +25,11 @@ export class FiltersComponent {
     } else {
       this.dateSort = 'oldToNew';
     }
+
     this.dateOrder.emit(this.dateSort);
   }
 
-  public setViewsOrder() {
+  public setViewsOrder(): void {
     this.dateSort = undefined;
 
     if (this.viewsSort === 'ascending') {
@@ -36,10 +37,11 @@ export class FiltersComponent {
     } else {
       this.viewsSort = 'ascending';
     }
+
     this.viewsOrder.emit(this.viewsSort);
   }
 
-  public setWordFilter(value: string) {
+  public setWordFilter(value: string): void {
     this.wordFilter.emit(value);
   }
 }

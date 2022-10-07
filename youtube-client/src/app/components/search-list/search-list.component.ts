@@ -13,20 +13,20 @@ export class SearchListComponent {
   public viewsOrder?: 'ascending' | 'descending';
   public word?: string;
 
-  public getResponse(query: string) {
+  public getResponse(query: string): void {
     console.log(query);
     this.items = data.items;
   }
 
-  public setDateOrder(order: 'oldToNew' | 'newToOld') {
+  public setDateOrder(order: 'oldToNew' | 'newToOld'): void {
     this.dateOrder = order;
   }
 
-  public setViewsOrder(order: 'ascending' | 'descending') {
+  public setViewsOrder(order: 'ascending' | 'descending'): void {
     this.viewsOrder = order;
   }
 
-  public setWordFilter(word: string) {
+  public setWordFilter(word: string): void {
     this.word = word;
   }
 }

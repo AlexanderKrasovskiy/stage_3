@@ -25,7 +25,7 @@ export class BorderHighlightDirective implements OnInit {
     );
   }
 
-  private resolveBottomColor() {
+  private resolveBottomColor(): void {
     const todayStamp = new Date().getTime();
     const publishStamp = new Date(this.date).getTime();
 

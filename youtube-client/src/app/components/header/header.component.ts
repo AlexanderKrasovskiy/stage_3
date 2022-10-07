@@ -17,7 +17,7 @@ export class HeaderComponent {
   @Output() private toggle = new EventEmitter();
   @ViewChild('searchForm') private searchForm!: ElementRef<HTMLFormElement>;
 
-  public onSearch() {
+  public onSearch(): void {
     if (!this.query || !this.query.trim()) return;
 
     this.query = this.query.trim().toLowerCase();
@@ -26,7 +26,7 @@ export class HeaderComponent {
     this.searchForm.nativeElement.reset();
   }
 
-  public toggleFilters() {
+  public toggleFilters(): void {
     this.toggle.emit();
   }
 }

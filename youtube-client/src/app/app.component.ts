@@ -11,23 +11,23 @@ export class AppComponent {
   @ViewChild(FiltersComponent) private filters!: FiltersComponent;
   @ViewChild(SearchListComponent) private search!: SearchListComponent;
 
-  public toggleFilters() {
+  public toggleFilters(): void {
     this.filters.toggleVisibility();
   }
 
-  public getResponse(query: string) {
+  public getResponse(query: string): void {
     this.search.getResponse(query);
   }
 
-  public setDateOrder(order: 'oldToNew' | 'newToOld') {
+  public setDateOrder(order: 'oldToNew' | 'newToOld'): void {
     this.search.setDateOrder(order);
   }
 
-  public setViewsOrder(order: 'ascending' | 'descending') {
+  public setViewsOrder(order: 'ascending' | 'descending'): void {
     this.search.setViewsOrder(order);
   }
 
-  public setWordFilter(word: string) {
+  public setWordFilter(word: string): void {
     this.search.setWordFilter(word);
   }
 }
