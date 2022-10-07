@@ -7,10 +7,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class FiltersComponent {
   show = false;
-  private dateSortOrder?: 'oldToNew' | 'newToOld';
-  private viewsSortOrder?: 'ascending' | 'descending';
-  @Output() private dateOrder = new EventEmitter<'oldToNew' | 'newToOld'>();
-  @Output() private viewsOrder = new EventEmitter<'ascending' | 'descending'>();
+  private dateSortOrder?: 'oldToNew' | 'newToOld' | null;
+  private viewsSortOrder?: 'ascending' | 'descending' | null;
+  @Output() private dateOrder = new EventEmitter<
+    'oldToNew' | 'newToOld' | null
+  >();
+  @Output() private viewsOrder = new EventEmitter<
+    'ascending' | 'descending' | null
+  >();
   @Output() private wordFilter = new EventEmitter<string>();
 
   toggleVisibility(): void {

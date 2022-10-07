@@ -4,3 +4,5 @@ export enum CardBottomBorderColors {
   Blue = '#2f80ed',
   Yellow = '#f2c94c',
 }
+
+export const DAY_IN_MS = 1000 * 60 * 60 * 24;

@@ -5,7 +5,10 @@ import { YtItem } from '../components/search-list/models/search-item.model';
   name: 'sortByViews',
 })
 export class SortByViewsPipe implements PipeTransform {
-  transform(items: YtItem[], order?: 'ascending' | 'descending'): YtItem[] {
+  transform(
+    items: YtItem[],
+    order?: 'ascending' | 'descending' | null,
+  ): YtItem[] {
     if (!order) return items;
 
     return [...items].sort((a, b) => {

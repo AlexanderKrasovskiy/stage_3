@@ -5,7 +5,7 @@ import { YtItem } from '../components/search-list/models/search-item.model';
   name: 'sortByDate',
 })
 export class SortByDatePipe implements PipeTransform {
-  transform(items: YtItem[], order?: 'oldToNew' | 'newToOld'): YtItem[] {
+  transform(items: YtItem[], order?: 'oldToNew' | 'newToOld' | null): YtItem[] {
     if (!order) return items;
 
     return [...items].sort((a, b) => {
