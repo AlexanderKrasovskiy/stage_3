@@ -21,10 +21,12 @@ export class SearchListComponent {
 
   setDateOrder(order: 'oldToNew' | 'newToOld'): void {
     this.dateOrder = order;
+    this.viewsOrder = undefined;
   }
 
   setViewsOrder(order: 'ascending' | 'descending'): void {
     this.viewsOrder = order;
+    this.dateOrder = undefined;
   }
 
   setWordFilter(word: string): void {

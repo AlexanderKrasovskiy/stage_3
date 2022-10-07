@@ -9,14 +9,14 @@ export class SortByViewsPipe implements PipeTransform {
     if (!order) return items;
 
     if (order === 'ascending') {
-      return items.sort((a, b) => {
+      return [...items].sort((a, b) => {
         const viewsA = +a.statistics.viewCount;
         const viewsB = +b.statistics.viewCount;
 
         return viewsA - viewsB;
       });
     }
-    return items.sort((a, b) => {
+    return [...items].sort((a, b) => {
       const viewsA = +a.statistics.viewCount;
       const viewsB = +b.statistics.viewCount;
 

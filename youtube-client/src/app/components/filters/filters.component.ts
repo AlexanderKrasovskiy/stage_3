@@ -18,8 +18,6 @@ export class FiltersComponent {
   }
 
   setDateOrder(): void {
-    this.viewsSort = undefined;
-
     if (this.dateSort === 'oldToNew') {
       this.dateSort = 'newToOld';
     } else {
@@ -30,8 +28,6 @@ export class FiltersComponent {
   }
 
   setViewsOrder(): void {
-    this.dateSort = undefined;
-
     if (this.viewsSort === 'ascending') {
       this.viewsSort = 'descending';
     } else {

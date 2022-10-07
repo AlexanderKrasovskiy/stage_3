@@ -9,14 +9,14 @@ export class SortByDatePipe implements PipeTransform {
     if (!order) return items;
 
     if (order === 'oldToNew') {
-      return items.sort((a, b) => {
+      return [...items].sort((a, b) => {
         const dateA = new Date(a.snippet.publishedAt).getTime();
         const dateB = new Date(b.snippet.publishedAt).getTime();
 
         return dateA - dateB;
       });
     }
-    return items.sort((a, b) => {
+    return [...items].sort((a, b) => {
       const dateA = new Date(a.snippet.publishedAt).getTime();
       const dateB = new Date(b.snippet.publishedAt).getTime();
 
