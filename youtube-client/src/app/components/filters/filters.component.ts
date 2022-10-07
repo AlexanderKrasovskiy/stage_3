@@ -18,21 +18,14 @@ export class FiltersComponent {
   }
 
   setDateOrder(): void {
-    if (this.dateSort === 'oldToNew') {
-      this.dateSort = 'newToOld';
-    } else {
-      this.dateSort = 'oldToNew';
-    }
+    this.dateSort = this.dateSort === 'oldToNew' ? 'newToOld' : 'oldToNew';
 
     this.dateOrder.emit(this.dateSort);
   }
 
   setViewsOrder(): void {
-    if (this.viewsSort === 'ascending') {
-      this.viewsSort = 'descending';
-    } else {
-      this.viewsSort = 'ascending';
-    }
+    this.viewsSort =
+      this.viewsSort === 'ascending' ? 'descending' : 'ascending';
 
     this.viewsOrder.emit(this.viewsSort);
   }
