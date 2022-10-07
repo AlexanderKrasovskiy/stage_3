@@ -1,17 +1,12 @@
 import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
+import { CardBottomBorderColors } from '../constants';
 
 @Directive({
   selector: '[appBorderHighlight]',
 })
 export class BorderHighlightDirective implements OnInit {
   @Input() date!: string;
-  private colors = {
-    red: '#eb5757',
-    green: '#27ae60',
-    blue: '#2f80ed',
-    yellow: '#f2c94c',
-  };
-  private color?: string;
+  private color?: CardBottomBorderColors;
 
   constructor(private elementRef: ElementRef, private renderer2: Renderer2) {}
 
@@ -34,13 +29,13 @@ export class BorderHighlightDirective implements OnInit {
     const days = Math.floor(diffMs / dayInMs);
 
     if (days > 182) {
-      this.color = this.colors.red;
+      this.color = CardBottomBorderColors.Red;
     } else if (days >= 30) {
-      this.color = this.colors.yellow;
+      this.color = CardBottomBorderColors.Yellow;
     } else if (days > 7) {
-      this.color = this.colors.green;
+      this.color = CardBottomBorderColors.Green;
     } else {
-      this.color = this.colors.blue;
+      this.color = CardBottomBorderColors.Blue;
     }
   }
 }
