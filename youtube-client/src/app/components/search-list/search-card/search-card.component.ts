@@ -7,5 +7,5 @@ import { YtItem } from '../models/search-item.model';
   styleUrls: ['./search-card.component.scss'],
 })
 export class SearchCardComponent {
-  @Input() public item!: YtItem;
+  @Input() item!: YtItem;
 }

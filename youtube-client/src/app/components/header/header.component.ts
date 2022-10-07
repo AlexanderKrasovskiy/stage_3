@@ -12,12 +12,12 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  public query: string = '';
+  query: string = '';
   @Output() private search = new EventEmitter<string>();
   @Output() private toggle = new EventEmitter();
   @ViewChild('searchForm') private searchForm!: ElementRef<HTMLFormElement>;
 
-  public onSearch(): void {
+  onSearch(): void {
     if (!this.query || !this.query.trim()) return;
 
     this.query = this.query.trim().toLowerCase();
@@ -26,7 +26,7 @@ export class HeaderComponent {
     this.searchForm.nativeElement.reset();
   }
 
-  public toggleFilters(): void {
+  toggleFilters(): void {
     this.toggle.emit();
   }
 }

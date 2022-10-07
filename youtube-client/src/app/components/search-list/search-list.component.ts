@@ -8,25 +8,25 @@ import data from './mock-response.json';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent {
-  public items?: YtItem[];
-  public dateOrder?: 'oldToNew' | 'newToOld';
-  public viewsOrder?: 'ascending' | 'descending';
-  public word?: string;
+  items?: YtItem[];
+  dateOrder?: 'oldToNew' | 'newToOld';
+  viewsOrder?: 'ascending' | 'descending';
+  word?: string;
 
-  public getResponse(query: string): void {
+  getResponse(query: string): void {
     console.log(query);
     this.items = data.items;
   }
 
-  public setDateOrder(order: 'oldToNew' | 'newToOld'): void {
+  setDateOrder(order: 'oldToNew' | 'newToOld'): void {
     this.dateOrder = order;
   }
 
-  public setViewsOrder(order: 'ascending' | 'descending'): void {
+  setViewsOrder(order: 'ascending' | 'descending'): void {
     this.viewsOrder = order;
   }
 
-  public setWordFilter(word: string): void {
+  setWordFilter(word: string): void {
     this.word = word;
   }
 }
