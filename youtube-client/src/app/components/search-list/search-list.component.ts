@@ -12,9 +12,10 @@ export class SearchListComponent {
   dateOrder?: 'oldToNew' | 'newToOld';
   viewsOrder?: 'ascending' | 'descending';
   word?: string;
+  query = '';
 
   getResponse(query: string): void {
-    console.log(query);
+    this.query = query;
     this.items = data.items;
   }
 
