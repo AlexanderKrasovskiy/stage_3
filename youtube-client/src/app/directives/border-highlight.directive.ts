@@ -37,7 +37,7 @@ export class BorderHighlightDirective implements OnInit {
       this.color = this.colors.red;
     } else if (days >= 30) {
       this.color = this.colors.yellow;
-    } else if (days >= 7) {
+    } else if (days > 7) {
       this.color = this.colors.green;
     } else {
       this.color = this.colors.blue;

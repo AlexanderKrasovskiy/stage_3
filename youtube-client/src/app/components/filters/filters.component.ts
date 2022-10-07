@@ -9,15 +9,15 @@ export class FiltersComponent {
   public show = false;
   private dateSort?: 'oldToNew' | 'newToOld';
   private viewsSort?: 'ascending' | 'descending';
-  @Output() dateOrder = new EventEmitter<'oldToNew' | 'newToOld'>();
-  @Output() viewsOrder = new EventEmitter<'ascending' | 'descending'>();
-  @Output() wordFilter = new EventEmitter<string>();
+  @Output() private dateOrder = new EventEmitter<'oldToNew' | 'newToOld'>();
+  @Output() private viewsOrder = new EventEmitter<'ascending' | 'descending'>();
+  @Output() private wordFilter = new EventEmitter<string>();
 
   public toggleVisibility() {
     this.show = !this.show;
   }
 
-  setDateOrder() {
+  public setDateOrder() {
     this.viewsSort = undefined;
 
     if (this.dateSort === 'oldToNew') {
@@ -28,7 +28,7 @@ export class FiltersComponent {
     this.dateOrder.emit(this.dateSort);
   }
 
-  setViewsOrder() {
+  public setViewsOrder() {
     this.dateSort = undefined;
 
     if (this.viewsSort === 'ascending') {
@@ -39,7 +39,7 @@ export class FiltersComponent {
     this.viewsOrder.emit(this.viewsSort);
   }
 
-  setWordFilter(value: string) {
+  public setWordFilter(value: string) {
     this.wordFilter.emit(value);
   }
 }

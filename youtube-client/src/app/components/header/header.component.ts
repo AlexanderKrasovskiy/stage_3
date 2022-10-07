@@ -13,9 +13,9 @@ import {
 })
 export class HeaderComponent {
   public query: string = '';
-  @Output() public search = new EventEmitter<string>();
-  @Output() public toggle = new EventEmitter();
-  @ViewChild('searchForm') searchForm!: ElementRef<HTMLFormElement>;
+  @Output() private search = new EventEmitter<string>();
+  @Output() private toggle = new EventEmitter();
+  @ViewChild('searchForm') private searchForm!: ElementRef<HTMLFormElement>;
 
   public onSearch() {
     if (!this.query || !this.query.trim()) return;

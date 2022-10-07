@@ -8,26 +8,26 @@ import { SearchListComponent } from './components/search-list/search-list.compon
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild(FiltersComponent) filters!: FiltersComponent;
-  @ViewChild(SearchListComponent) search!: SearchListComponent;
+  @ViewChild(FiltersComponent) private filters!: FiltersComponent;
+  @ViewChild(SearchListComponent) private search!: SearchListComponent;
 
-  toggleFilters() {
+  public toggleFilters() {
     this.filters.toggleVisibility();
   }
 
-  getResponse(query: string) {
+  public getResponse(query: string) {
     this.search.getResponse(query);
   }
 
-  setDateOrder(order: 'oldToNew' | 'newToOld') {
+  public setDateOrder(order: 'oldToNew' | 'newToOld') {
     this.search.setDateOrder(order);
   }
 
-  setViewsOrder(order: 'ascending' | 'descending') {
+  public setViewsOrder(order: 'ascending' | 'descending') {
     this.search.setViewsOrder(order);
   }
 
-  setWordFilter(word: string) {
+  public setWordFilter(word: string) {
     this.search.setWordFilter(word);
   }
 }
