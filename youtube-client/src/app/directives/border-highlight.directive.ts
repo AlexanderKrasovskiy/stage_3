@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
+import { Directive, OnInit, Input, HostBinding } from '@angular/core';
 import { CardBottomBorderColors } from '../constants';
 
 @Directive({
@@ -7,17 +7,12 @@ import { CardBottomBorderColors } from '../constants';
 export class BorderHighlightDirective implements OnInit {
   @Input() dateOfPublishing?: string;
   private color?: CardBottomBorderColors;
-
-  constructor(private elementRef: ElementRef, private renderer2: Renderer2) {}
+  @HostBinding('style.backgroundColor') backgroundColor?: string;
 
   ngOnInit(): void {
     this.resolveBottomColor();
 
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'background-color',
-      this.color,
-    );
+    this.backgroundColor = this.color;
   }
 
   private resolveBottomColor(): void {
