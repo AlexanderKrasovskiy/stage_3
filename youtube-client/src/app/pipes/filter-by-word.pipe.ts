@@ -6,9 +6,9 @@ import { YtItem } from '../components/search-list/models/search-item.model';
 })
 export class FilterByWordPipe implements PipeTransform {
   transform(items: YtItem[], word?: string): YtItem[] {
-    if (!word) return items;
+    if (!word) return [...items];
 
-    return items.filter((item) =>
+    return [...items].filter((item) =>
       item.snippet.title.toLowerCase().includes(word.toLowerCase()),
     );
   }

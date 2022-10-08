@@ -25,12 +25,16 @@ export class FiltersComponent {
     this.dateSortOrder =
       this.dateSortOrder === 'oldToNew' ? 'newToOld' : 'oldToNew';
 
+    this.viewsSortOrder = null;
+
     this.dateOrder.emit(this.dateSortOrder);
   }
 
   setViewsOrder(): void {
     this.viewsSortOrder =
       this.viewsSortOrder === 'ascending' ? 'descending' : 'ascending';
+
+    this.dateSortOrder = null;
 
     this.viewsOrder.emit(this.viewsSortOrder);
   }

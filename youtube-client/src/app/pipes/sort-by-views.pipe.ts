@@ -9,7 +9,7 @@ export class SortByViewsPipe implements PipeTransform {
     items: YtItem[],
     order?: 'ascending' | 'descending' | null,
   ): YtItem[] {
-    if (!order) return items;
+    if (!order) return [...items];
 
     return [...items].sort((a, b) => {
       const viewsA = +a.statistics.viewCount;
