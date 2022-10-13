@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="container header__container">
+    <div class="side-block"></div>
+
+    <div class="center-block">
+      <div class="logo"></div>
+
+      <form #searchForm class="search-form" (submit)="onSearch()">
+        <mat-form-field appearance="standard">
+          <mat-label>Search</mat-label>
+          <input matInput name="query" [(ngModel)]="query" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Search</button>
+      </form>
+
+      <button mat-mini-fab color="primary" (click)="toggleFilters()">
+        <mat-icon fontIcon="tune"></mat-icon>
+      </button>
+    </div>
+
+    <div class="side-block">
+      <span class="user-name">Your Name</span>
+
+      <button mat-mini-fab color="primary">
+        <mat-icon fontIcon="account_circle"></mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

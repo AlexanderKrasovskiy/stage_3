@@ -1,27 +1,20 @@
-# YoutubeClient
+# alexanderkrasovskiy-ANGULAR2022Q3
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
+Private repository for @alexanderkrasovskiy
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## To start a **youtube-client** project :
 
-## Code scaffolding
+1. create a folder, open a terminal (Git Bash preferably)
+2. `git clone git@github.com:rolling-scopes-school/alexanderkrasovskiy-ANGULAR2022Q3.git` - clone this repo
+3. `cd alexanderkrasovskiy-ANGULAR2022Q3/` - open cloned folder
+4. `git branch -a` - list all branches
+5. `git checkout <current-task-branch>` - switch to current task branch
+6. `cd youtube-client` - open app folder
+7. `code .` - open this folder in your IDE
+8. `npm i` - install all dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `npm install -g @angular/cli` - you may need to install Angular CLI (if you haven't previously)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+9. `ng s -o` - start dev server

@@ -1,26 +1,39 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './modules/material/material.module';
+
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FiltersComponent } from './header/filters/filters.component';
-import { AuthComponent } from './auth/auth.component';
-import { SearchListComponent } from './search/search-list/search-list.component';
-import { SearchCardComponent } from './search/search-card/search-card.component';
-import { SearchDetailsComponent } from './search/search-details/search-details.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
+import { SearchCardComponent } from './components/search-list/search-card/search-card.component';
+import { BorderHighlightDirective } from './directives/border-highlight.directive';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
+import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FiltersComponent,
-    AuthComponent,
     SearchListComponent,
     SearchCardComponent,
-    SearchDetailsComponent,
+    BorderHighlightDirective,
+    SortByDatePipe,
+    SortByViewsPipe,
+    FilterByWordPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MaterialModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

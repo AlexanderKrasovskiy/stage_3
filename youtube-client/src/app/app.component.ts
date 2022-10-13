@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FiltersComponent } from './components/filters/filters.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'youtube-client';
+  @ViewChild(FiltersComponent) private filters?: FiltersComponent;
+  @ViewChild(SearchListComponent) private search?: SearchListComponent;
+
+  toggleFilters(): void {
+    this.filters?.toggleVisibility();
+  }
+
+  getResponse(query: string): void {
+    this.search?.getResponse(query);
+  }
+
+  setDateOrder(order: 'oldToNew' | 'newToOld' | null): void {
+    this.search?.setDateOrder(order);
+  }
+
+  setViewsOrder(order: 'ascending' | 'descending' | null): void {
+    this.search?.setViewsOrder(order);
+  }
+
+  setWordFilter(word: string): void {
+    this.search?.setWordFilter(word);
+  }
 }
