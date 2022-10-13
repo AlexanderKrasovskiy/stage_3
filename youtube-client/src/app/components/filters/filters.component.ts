@@ -7,13 +7,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class FiltersComponent {
   show = false;
-  private dateSortOrder?: 'oldToNew' | 'newToOld' | null;
-  private viewsSortOrder?: 'ascending' | 'descending' | null;
+  private dateSortOrder: 'oldToNew' | 'newToOld' | '' = '';
+  private viewsSortOrder: 'ascending' | 'descending' | '' = '';
   @Output() private dateOrder = new EventEmitter<
-    'oldToNew' | 'newToOld' | null
+    'oldToNew' | 'newToOld' | ''
   >();
   @Output() private viewsOrder = new EventEmitter<
-    'ascending' | 'descending' | null
+    'ascending' | 'descending' | ''
   >();
   @Output() private wordFilter = new EventEmitter<string>();
 
@@ -25,7 +25,7 @@ export class FiltersComponent {
     this.dateSortOrder =
       this.dateSortOrder === 'oldToNew' ? 'newToOld' : 'oldToNew';
 
-    this.viewsSortOrder = null;
+    this.viewsSortOrder = '';
 
     this.dateOrder.emit(this.dateSortOrder);
   }
@@ -34,7 +34,7 @@ export class FiltersComponent {
     this.viewsSortOrder =
       this.viewsSortOrder === 'ascending' ? 'descending' : 'ascending';
 
-    this.dateSortOrder = null;
+    this.dateSortOrder = '';
 
     this.viewsOrder.emit(this.viewsSortOrder);
   }

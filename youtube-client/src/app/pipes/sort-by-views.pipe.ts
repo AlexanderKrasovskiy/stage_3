@@ -7,7 +7,7 @@ import { YtItem } from '../components/search-list/models/search-item.model';
 export class SortByViewsPipe implements PipeTransform {
   transform(
     items: YtItem[],
-    order?: 'ascending' | 'descending' | null,
+    order: 'ascending' | 'descending' | '' = '',
   ): YtItem[] {
     if (!order) return [...items];
 

@@ -9,9 +9,9 @@ import data from './mock-response.json';
 })
 export class SearchListComponent {
   items?: YtItem[];
-  dateOrder?: 'oldToNew' | 'newToOld' | null;
-  viewsOrder?: 'ascending' | 'descending' | null;
-  word?: string;
+  dateOrder: 'oldToNew' | 'newToOld' | '' = '';
+  viewsOrder: 'ascending' | 'descending' | '' = '';
+  word = '';
   query = '';
 
   getResponse(query: string): void {
@@ -19,14 +19,14 @@ export class SearchListComponent {
     this.items = data.items;
   }
 
-  setDateOrder(order: 'oldToNew' | 'newToOld' | null): void {
+  setDateOrder(order: 'oldToNew' | 'newToOld' | ''): void {
     this.dateOrder = order;
-    this.viewsOrder = null;
+    this.viewsOrder = '';
   }
 
-  setViewsOrder(order: 'ascending' | 'descending' | null): void {
+  setViewsOrder(order: 'ascending' | 'descending' | ''): void {
     this.viewsOrder = order;
-    this.dateOrder = null;
+    this.dateOrder = '';
   }
 
   setWordFilter(word: string): void {
