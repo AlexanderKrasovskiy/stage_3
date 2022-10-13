@@ -1,5 +1,5 @@
 import { Directive, OnInit, Input, HostBinding } from '@angular/core';
-import { CardBottomBorderColors, DAY_IN_MS } from '../../shared/constants';
+import { CardBottomBorderColors, DAY_IN_MS } from '../constants';
 
 @Directive({
   selector: '[appBorderHighlight]',
@@ -7,12 +7,12 @@ import { CardBottomBorderColors, DAY_IN_MS } from '../../shared/constants';
 export class BorderHighlightDirective implements OnInit {
   @Input() dateOfPublishing?: string;
   private color?: CardBottomBorderColors;
-  @HostBinding('style.backgroundColor') backgroundColor?: string;
+  @HostBinding('style.borderBottom') borderBottom?: string;
 
   ngOnInit(): void {
     this.resolveBottomColor();
 
-    this.backgroundColor = this.color;
+    this.borderBottom = `5px solid ${this.color}`;
   }
 
   private resolveBottomColor(): void {

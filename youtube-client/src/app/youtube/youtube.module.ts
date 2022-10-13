@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchCardComponent } from './components/search-card/search-card.component';
 
-import { BorderHighlightDirective } from './directives/border-highlight.directive';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
@@ -18,7 +17,6 @@ import { DetailsPageComponent } from './pages/details-page/details-page.componen
   declarations: [
     SearchListComponent,
     SearchCardComponent,
-    BorderHighlightDirective,
     SortByDatePipe,
     SortByViewsPipe,
     FilterByWordPipe,
