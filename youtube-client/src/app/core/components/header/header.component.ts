@@ -1,10 +1,5 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { Component } from '@angular/core';
+import { YoutubeApiService } from 'src/app/youtube/services/youtube-api.service';
 import { FiltersService } from '../../services/filters.service';
 
 @Component({
@@ -13,19 +8,13 @@ import { FiltersService } from '../../services/filters.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  query: string = '';
-  @Output() private search = new EventEmitter<string>();
-  @ViewChild('searchForm') private searchForm?: ElementRef<HTMLFormElement>; // del searchForm
-
-  constructor(private filtersService: FiltersService) {}
+  constructor(
+    private filtersService: FiltersService,
+    public youtubeApiService: YoutubeApiService,
+  ) {}
 
   onSearch(): void {
-    if (!this.query || !this.query.trim()) return;
-
-    this.query = this.query.trim().toLowerCase();
-
-    this.search.emit(this.query);
-    this.searchForm?.nativeElement.reset();
+    this.youtubeApiService.onSearch();
   }
 
   toggleFilters(): void {

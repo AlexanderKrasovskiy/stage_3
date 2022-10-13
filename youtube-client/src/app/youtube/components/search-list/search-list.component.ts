@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FiltersService } from 'src/app/core/services/filters.service';
-import { YtItem } from '../../models/search-item.model';
-import data from './mock-response.json';
+import { YoutubeApiService } from '../../services/youtube-api.service';
 
 @Component({
   selector: 'app-search-list',
@@ -9,13 +8,8 @@ import data from './mock-response.json';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent {
-  items?: YtItem[];
-  query = '';
-
-  constructor(public filtersService: FiltersService) {}
-
-  getResponse(query: string): void {
-    this.query = query;
-    this.items = data.items;
-  }
+  constructor(
+    public filtersService: FiltersService,
+    public youtubeApiService: YoutubeApiService,
+  ) {}
 }

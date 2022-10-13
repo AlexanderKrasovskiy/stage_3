@@ -5,10 +5,10 @@
     <div class="center-block">
       <div class="logo"></div>
 
-      <form #searchForm class="search-form" (submit)="onSearch()">
+      <form class="search-form" (submit)="onSearch()">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
-          <input matInput name="query" [(ngModel)]="query" />
+          <input matInput name="query" [(ngModel)]="youtubeApiService.query" />
         </mat-form-field>
 
         <button mat-raised-button color="primary">Search</button>
