@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { FiltersComponent } from './components/filters/filters.component';
-import { SearchListComponent } from './components/search-list/search-list.component';
-import { DateSortOrder, ViewsSortOrder } from './constants';
+import { FiltersComponent } from './core/components/filters/filters.component';
+import { SearchListComponent } from './youtube/components/search-list/search-list.component';
+import { DateSortOrder, ViewsSortOrder } from './core/constants';
 
 @Component({
   selector: 'app-root',

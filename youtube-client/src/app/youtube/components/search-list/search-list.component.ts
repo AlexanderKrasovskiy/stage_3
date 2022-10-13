@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DateSortOrder, ViewsSortOrder } from 'src/app/constants';
+import { DateSortOrder, ViewsSortOrder } from 'src/app/core/constants';
 import { YtItem } from './models/search-item.model';
 import data from './mock-response.json';
 

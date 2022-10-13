@@ -1,5 +1,5 @@
 import { Directive, OnInit, Input, HostBinding } from '@angular/core';
-import { CardBottomBorderColors, DAY_IN_MS } from '../constants';
+import { CardBottomBorderColors, DAY_IN_MS } from '../../core/constants';
 
 @Directive({
   selector: '[appBorderHighlight]',

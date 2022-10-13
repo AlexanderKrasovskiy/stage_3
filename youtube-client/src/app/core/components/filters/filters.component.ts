@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { DateSortOrder, ViewsSortOrder } from 'src/app/constants';
+import { DateSortOrder, ViewsSortOrder } from 'src/app/core/constants';
 
 @Component({
   selector: 'app-filters',

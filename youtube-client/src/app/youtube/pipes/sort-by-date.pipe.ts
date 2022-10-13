@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { YtItem } from '../components/search-list/models/search-item.model';
-import { DateSortOrder } from '../constants';
+import { DateSortOrder } from '../../core/constants';
 
 @Pipe({
   name: 'sortByDate',
