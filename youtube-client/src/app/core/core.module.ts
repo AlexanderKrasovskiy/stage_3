@@ -6,9 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FiltersComponent } from './components/filters/filters.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FiltersComponent],
+  declarations: [HeaderComponent, FiltersComponent, NotFoundComponent],
   imports: [CommonModule, FormsModule, SharedModule],
   exports: [HeaderComponent, FiltersComponent], // m.b. refactor to MainPageComponent
 })

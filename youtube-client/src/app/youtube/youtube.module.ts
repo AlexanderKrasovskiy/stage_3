@@ -11,6 +11,8 @@ import { BorderHighlightDirective } from './directives/border-highlight.directiv
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { DetailsPageComponent } from './pages/details-page/details-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
     SortByDatePipe,
     SortByViewsPipe,
     FilterByWordPipe,
+    MainPageComponent,
+    DetailsPageComponent,
   ],
   imports: [CommonModule, YoutubeRoutingModule, SharedModule],
   exports: [SearchListComponent], // m.b. refactor to page ?
