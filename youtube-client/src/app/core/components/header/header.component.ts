@@ -15,7 +15,7 @@ import { FiltersService } from '../../services/filters.service';
 export class HeaderComponent {
   query: string = '';
   @Output() private search = new EventEmitter<string>();
-  @ViewChild('searchForm') private searchForm?: ElementRef<HTMLFormElement>;
+  @ViewChild('searchForm') private searchForm?: ElementRef<HTMLFormElement>; // del searchForm
 
   constructor(private filtersService: FiltersService) {}
 

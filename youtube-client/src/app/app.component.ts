@@ -13,8 +13,4 @@ export class AppComponent {
   getResponse(query: string): void {
     this.searchListComponent?.getResponse(query);
   }
-
-  setWordFilter(word: string): void {
-    this.searchListComponent?.setWordFilter(word);
-  }
 }

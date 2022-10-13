@@ -8,6 +8,7 @@ export class FiltersService {
   isVisible = false;
   dateSortOrder = DateSortOrder.default;
   viewsSortOrder = ViewsSortOrder.default;
+  word = '';
 
   toggleFilters(): void {
     this.isVisible = !this.isVisible;
@@ -29,5 +30,9 @@ export class FiltersService {
         : ViewsSortOrder.ascending;
 
     this.dateSortOrder = DateSortOrder.default;
+  }
+
+  setWordFilter(value: string): void {
+    this.word = value;
   }
 }

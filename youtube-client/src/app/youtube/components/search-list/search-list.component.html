@@ -4,7 +4,7 @@
       let item of items
         | sortByDate: filtersService.dateSortOrder
         | sortByViews: filtersService.viewsSortOrder
-        | filterByWord: word
+        | filterByWord: filtersService.word
     "
     [item]="item"></app-search-card>
 </div>

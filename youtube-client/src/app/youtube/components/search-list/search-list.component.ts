@@ -10,7 +10,6 @@ import data from './mock-response.json';
 })
 export class SearchListComponent {
   items?: YtItem[];
-  word = '';
   query = '';
 
   constructor(public filtersService: FiltersService) {}
@@ -18,9 +17,5 @@ export class SearchListComponent {
   getResponse(query: string): void {
     this.query = query;
     this.items = data.items;
-  }
-
-  setWordFilter(word: string): void {
-    this.word = word;
   }
 }
