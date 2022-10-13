@@ -10,6 +10,6 @@ import { FiltersComponent } from './components/filters/filters.component';
 @NgModule({
   declarations: [HeaderComponent, FiltersComponent],
   imports: [CommonModule, FormsModule, SharedModule],
-  exports: [HeaderComponent, FiltersComponent], // just MainComponent ?
+  exports: [HeaderComponent, FiltersComponent], // m.b. refactor to MainPageComponent
 })
 export class CoreModule {}

@@ -5,7 +5,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { SearchListComponent } from './components/search-list/search-list.component';
-import { SearchCardComponent } from './components/search-list/search-card/search-card.component';
+import { SearchCardComponent } from './components/search-card/search-card.component';
 
 import { BorderHighlightDirective } from './directives/border-highlight.directive';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
@@ -22,6 +22,6 @@ import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
     FilterByWordPipe,
   ],
   imports: [CommonModule, YoutubeRoutingModule, SharedModule],
-  exports: [SearchListComponent],
+  exports: [SearchListComponent], // m.b. refactor to page ?
 })
 export class YoutubeModule {}

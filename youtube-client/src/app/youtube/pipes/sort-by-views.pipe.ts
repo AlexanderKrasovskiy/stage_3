@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { YtItem } from '../components/search-list/models/search-item.model';
-import { ViewsSortOrder } from '../../core/constants';
+import { YtItem } from '../models/search-item.model';
+import { ViewsSortOrder } from '../../shared/constants';
 
 @Pipe({
   name: 'sortByViews',

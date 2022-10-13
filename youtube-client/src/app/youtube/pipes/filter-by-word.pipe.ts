@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { YtItem } from '../components/search-list/models/search-item.model';
+import { YtItem } from '../models/search-item.model';
 
 @Pipe({
   name: 'filterByWord',

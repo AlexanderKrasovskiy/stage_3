@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { YtItem } from '../models/search-item.model';
+import { YtItem } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-search-card',
