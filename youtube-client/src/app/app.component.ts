@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { FiltersComponent } from './core/components/filters/filters.component';
 import { SearchListComponent } from './youtube/components/search-list/search-list.component';
 import { DateSortOrder, ViewsSortOrder } from './shared/constants';
 
@@ -9,13 +8,8 @@ import { DateSortOrder, ViewsSortOrder } from './shared/constants';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild(FiltersComponent) private filtersComponent?: FiltersComponent;
   @ViewChild(SearchListComponent)
   private searchListComponent?: SearchListComponent;
-
-  toggleFilters(): void {
-    this.filtersComponent?.toggleVisibility();
-  }
 
   getResponse(query: string): void {
     this.searchListComponent?.getResponse(query);

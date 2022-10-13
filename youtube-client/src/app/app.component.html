@@ -1,6 +1,4 @@
-<app-header
-  (toggle)="toggleFilters()"
-  (search)="getResponse($event)"></app-header>
+<app-header (search)="getResponse($event)"></app-header>
 <app-filters
   (dateOrder)="setDateOrder($event)"
   (viewsOrder)="setViewsOrder($event)"

@@ -5,6 +5,7 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
+import { FiltersService } from '../../services/filters.service';
 
 @Component({
   selector: 'app-header',
@@ -14,19 +15,20 @@ import {
 export class HeaderComponent {
   query: string = '';
   @Output() private search = new EventEmitter<string>();
-  @Output() private toggle = new EventEmitter();
   @ViewChild('searchForm') private searchForm?: ElementRef<HTMLFormElement>;
+
+  constructor(private filtersService: FiltersService) {}
 
   onSearch(): void {
     if (!this.query || !this.query.trim()) return;
 
     this.query = this.query.trim().toLowerCase();
-    this.search.emit(this.query);
 
+    this.search.emit(this.query);
     this.searchForm?.nativeElement.reset();
   }
 
   toggleFilters(): void {
-    this.toggle.emit();
+    this.filtersService.toggleFilters();
   }
 }

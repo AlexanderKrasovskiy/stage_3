@@ -1,21 +1,29 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, DoCheck } from '@angular/core';
 import { DateSortOrder, ViewsSortOrder } from 'src/app/shared/constants';
+import { FiltersService } from '../../services/filters.service';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
 })
-export class FiltersComponent {
-  show = false;
+export class FiltersComponent implements DoCheck {
+  isVisible = false;
+
   private dateSortOrder = DateSortOrder.default;
   private viewsSortOrder = ViewsSortOrder.default;
+
   @Output() private dateOrder = new EventEmitter<DateSortOrder>();
   @Output() private viewsOrder = new EventEmitter<ViewsSortOrder>();
   @Output() private wordFilter = new EventEmitter<string>();
 
-  toggleVisibility(): void {
-    this.show = !this.show;
+  constructor(private filtersService: FiltersService) {}
+
+  ngDoCheck(): void {
+    const visibilityChanged = this.isVisible !== this.filtersService.isVisible;
+    if (visibilityChanged) {
+      this.isVisible = this.filtersService.isVisible;
+    }
   }
 
   setDateOrder(): void {
