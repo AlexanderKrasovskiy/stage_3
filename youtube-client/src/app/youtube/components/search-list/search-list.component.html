@@ -2,8 +2,8 @@
   <app-search-card
     *ngFor="
       let item of items
-        | sortByDate: dateOrder
-        | sortByViews: viewsOrder
+        | sortByDate: filtersService.dateSortOrder
+        | sortByViews: filtersService.viewsSortOrder
         | filterByWord: word
     "
     [item]="item"></app-search-card>

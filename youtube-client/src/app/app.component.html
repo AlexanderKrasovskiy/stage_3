@@ -1,7 +1,4 @@
 <app-header (search)="getResponse($event)"></app-header>
-<app-filters
-  (dateOrder)="setDateOrder($event)"
-  (viewsOrder)="setViewsOrder($event)"
-  (wordFilter)="setWordFilter($event)"></app-filters>
+<app-filters (wordFilter)="setWordFilter($event)"></app-filters>
 <!-- <router-outlet></router-outlet> -->
 <app-search-list></app-search-list>

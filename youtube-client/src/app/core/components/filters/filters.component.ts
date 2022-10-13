@@ -1,5 +1,4 @@
-import { Component, Output, EventEmitter, DoCheck } from '@angular/core';
-import { DateSortOrder, ViewsSortOrder } from 'src/app/shared/constants';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FiltersService } from '../../services/filters.service';
 
 @Component({
@@ -7,45 +6,17 @@ import { FiltersService } from '../../services/filters.service';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
 })
-export class FiltersComponent implements DoCheck {
-  isVisible = false;
-
-  private dateSortOrder = DateSortOrder.default;
-  private viewsSortOrder = ViewsSortOrder.default;
-
-  @Output() private dateOrder = new EventEmitter<DateSortOrder>();
-  @Output() private viewsOrder = new EventEmitter<ViewsSortOrder>();
+export class FiltersComponent {
   @Output() private wordFilter = new EventEmitter<string>();
 
-  constructor(private filtersService: FiltersService) {}
-
-  ngDoCheck(): void {
-    const visibilityChanged = this.isVisible !== this.filtersService.isVisible;
-    if (visibilityChanged) {
-      this.isVisible = this.filtersService.isVisible;
-    }
-  }
+  constructor(public filtersService: FiltersService) {}
 
   setDateOrder(): void {
-    this.dateSortOrder =
-      this.dateSortOrder === DateSortOrder.oldToNew
-        ? DateSortOrder.newToOld
-        : DateSortOrder.oldToNew;
-
-    this.viewsSortOrder = ViewsSortOrder.default;
-
-    this.dateOrder.emit(this.dateSortOrder);
+    this.filtersService.setDateOrder();
   }
 
   setViewsOrder(): void {
-    this.viewsSortOrder =
-      this.viewsSortOrder === ViewsSortOrder.ascending
-        ? ViewsSortOrder.descending
-        : ViewsSortOrder.ascending;
-
-    this.dateSortOrder = DateSortOrder.default;
-
-    this.viewsOrder.emit(this.viewsSortOrder);
+    this.filtersService.setViewsOrder();
   }
 
   setWordFilter(value: string): void {
