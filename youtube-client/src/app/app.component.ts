@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
+import { DateSortOrder, ViewsSortOrder } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -8,26 +9,27 @@ import { SearchListComponent } from './components/search-list/search-list.compon
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild(FiltersComponent) private filters?: FiltersComponent;
-  @ViewChild(SearchListComponent) private search?: SearchListComponent;
+  @ViewChild(FiltersComponent) private filtersComponent?: FiltersComponent;
+  @ViewChild(SearchListComponent)
+  private searchListComponent?: SearchListComponent;
 
   toggleFilters(): void {
-    this.filters?.toggleVisibility();
+    this.filtersComponent?.toggleVisibility();
   }
 
   getResponse(query: string): void {
-    this.search?.getResponse(query);
+    this.searchListComponent?.getResponse(query);
   }
 
-  setDateOrder(order: 'oldToNew' | 'newToOld' | ''): void {
-    this.search?.setDateOrder(order);
+  setDateOrder(order: DateSortOrder): void {
+    this.searchListComponent?.setDateOrder(order);
   }
 
-  setViewsOrder(order: 'ascending' | 'descending' | ''): void {
-    this.search?.setViewsOrder(order);
+  setViewsOrder(order: ViewsSortOrder): void {
+    this.searchListComponent?.setViewsOrder(order);
   }
 
   setWordFilter(word: string): void {
-    this.search?.setWordFilter(word);
+    this.searchListComponent?.setWordFilter(word);
   }
 }

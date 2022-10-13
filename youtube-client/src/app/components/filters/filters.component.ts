@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { DateSortOrder, ViewsSortOrder } from 'src/app/constants';
 
 @Component({
   selector: 'app-filters',
@@ -7,14 +8,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class FiltersComponent {
   show = false;
-  private dateSortOrder: 'oldToNew' | 'newToOld' | '' = '';
-  private viewsSortOrder: 'ascending' | 'descending' | '' = '';
-  @Output() private dateOrder = new EventEmitter<
-    'oldToNew' | 'newToOld' | ''
-  >();
-  @Output() private viewsOrder = new EventEmitter<
-    'ascending' | 'descending' | ''
-  >();
+  private dateSortOrder = DateSortOrder.default;
+  private viewsSortOrder = ViewsSortOrder.default;
+  @Output() private dateOrder = new EventEmitter<DateSortOrder>();
+  @Output() private viewsOrder = new EventEmitter<ViewsSortOrder>();
   @Output() private wordFilter = new EventEmitter<string>();
 
   toggleVisibility(): void {
@@ -23,18 +20,22 @@ export class FiltersComponent {
 
   setDateOrder(): void {
     this.dateSortOrder =
-      this.dateSortOrder === 'oldToNew' ? 'newToOld' : 'oldToNew';
+      this.dateSortOrder === DateSortOrder.oldToNew
+        ? DateSortOrder.newToOld
+        : DateSortOrder.oldToNew;
 
-    this.viewsSortOrder = '';
+    this.viewsSortOrder = ViewsSortOrder.default;
 
     this.dateOrder.emit(this.dateSortOrder);
   }
 
   setViewsOrder(): void {
     this.viewsSortOrder =
-      this.viewsSortOrder === 'ascending' ? 'descending' : 'ascending';
+      this.viewsSortOrder === ViewsSortOrder.ascending
+        ? ViewsSortOrder.descending
+        : ViewsSortOrder.ascending;
 
-    this.dateSortOrder = '';
+    this.dateSortOrder = DateSortOrder.default;
 
     this.viewsOrder.emit(this.viewsSortOrder);
   }

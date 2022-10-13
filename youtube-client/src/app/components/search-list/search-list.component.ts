@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DateSortOrder, ViewsSortOrder } from 'src/app/constants';
 import { YtItem } from './models/search-item.model';
 import data from './mock-response.json';
 
@@ -9,8 +10,8 @@ import data from './mock-response.json';
 })
 export class SearchListComponent {
   items?: YtItem[];
-  dateOrder: 'oldToNew' | 'newToOld' | '' = '';
-  viewsOrder: 'ascending' | 'descending' | '' = '';
+  dateOrder = DateSortOrder.default;
+  viewsOrder = ViewsSortOrder.default;
   word = '';
   query = '';
 
@@ -19,14 +20,14 @@ export class SearchListComponent {
     this.items = data.items;
   }
 
-  setDateOrder(order: 'oldToNew' | 'newToOld' | ''): void {
+  setDateOrder(order: DateSortOrder): void {
     this.dateOrder = order;
-    this.viewsOrder = '';
+    this.viewsOrder = ViewsSortOrder.default;
   }
 
-  setViewsOrder(order: 'ascending' | 'descending' | ''): void {
+  setViewsOrder(order: ViewsSortOrder): void {
     this.viewsOrder = order;
-    this.dateOrder = '';
+    this.dateOrder = DateSortOrder.default;
   }
 
   setWordFilter(word: string): void {
