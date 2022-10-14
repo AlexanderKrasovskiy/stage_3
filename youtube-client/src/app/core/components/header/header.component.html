@@ -20,9 +20,9 @@
     </div>
 
     <div class="side-block">
-      <span class="user-name">Your Name</span>
+      <span class="user-name" [innerText]="userService.username"></span>
 
-      <button mat-mini-fab color="primary">
+      <button mat-mini-fab color="primary" (click)="onLogout()">
         <mat-icon fontIcon="account_circle"></mat-icon>
       </button>
     </div>

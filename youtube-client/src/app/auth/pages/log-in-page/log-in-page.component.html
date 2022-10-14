@@ -1,15 +1,25 @@
 <div class="container login_page">
-  <form class="login_form">
+  <form class="login_form" (submit)="onLogin()">
     <h3 class="form_title">Login</h3>
 
     <mat-form-field appearance="fill">
       <mat-label>login</mat-label>
-      <input matInput type="text" />
+      <input
+        type="text"
+        name="login"
+        required
+        matInput
+        [(ngModel)]="authService.login" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>password</mat-label>
-      <input matInput type="password" />
+      <input
+        type="password"
+        name="password"
+        required
+        matInput
+        [(ngModel)]="authService.password" />
     </mat-form-field>
 
     <button class="form_button" mat-raised-button color="primary">Login</button>
