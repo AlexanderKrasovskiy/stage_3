@@ -11,8 +11,14 @@ export class AuthService {
   constructor(private userService: UserService) {}
 
   onLogin() {
+    this.login = this.login.trim();
+    this.password = this.password.trim();
+
+    if (!this.login || !this.password) return;
+
     localStorage.setItem('loggedIn', 'true');
     this.userService.username = this.login;
+
     this.login = '';
     this.password = '';
   }
