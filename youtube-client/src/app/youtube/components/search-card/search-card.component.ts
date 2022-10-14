@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { YtItem } from '../../models/search-item.model';
+import { YoutubeApiService } from '../../services/youtube-api.service';
 
 @Component({
   selector: 'app-search-card',
@@ -8,4 +9,10 @@ import { YtItem } from '../../models/search-item.model';
 })
 export class SearchCardComponent {
   @Input() item!: YtItem;
+
+  constructor(private youtubeApiService: YoutubeApiService) {}
+
+  onDetails() {
+    this.youtubeApiService.onDetails(this.item.id);
+  }
 }

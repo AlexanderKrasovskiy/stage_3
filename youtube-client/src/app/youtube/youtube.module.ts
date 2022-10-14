@@ -12,6 +12,7 @@ import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
+import { BorderHighlightDirective } from './directives/border-highlight.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DetailsPageComponent } from './pages/details-page/details-page.componen
     SortByViewsPipe,
     FilterByWordPipe,
     DetailsPageComponent,
+    BorderHighlightDirective,
   ],
   imports: [CommonModule, YoutubeRoutingModule, SharedModule],
   exports: [SearchListComponent, DetailsPageComponent],

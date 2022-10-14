@@ -21,8 +21,11 @@
   padding: 2px 7px;
   border-radius: 5px 0 0 5px;
   color: white;
-  background-color: green;
   font-size: 28px;
+}
+
+.back_btn:hover {
+  cursor: pointer;
 }
 
 .details_img {
@@ -53,7 +56,6 @@
 }
 
 .card_subtitle {
-  // align-self: flex-end;
   font-size: 10px;
   color: #828282;
   padding-top: 5px;
@@ -67,4 +69,7 @@
   margin: 0;
   font-size: 12px;
   color: #828282;
+  max-height: 200px;
+  overflow-y: scroll;
+  white-space: pre-line;
 }

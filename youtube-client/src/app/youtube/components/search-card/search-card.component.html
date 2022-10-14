@@ -7,7 +7,9 @@
     (item.snippet.title | slice: 0:33) + '...'
   }}</mat-card-title>
   <div class="button-container">
-    <button mat-raised-button color="primary">more...</button>
+    <button mat-raised-button color="primary" (click)="onDetails()">
+      more...
+    </button>
   </div>
   <mat-card-footer
     appBackgroundHighlight
