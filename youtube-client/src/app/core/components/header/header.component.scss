@@ -28,6 +28,10 @@
   background: url('./logo.png');
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .search-form {
   flex-grow: 1;
   margin: 0 10px;

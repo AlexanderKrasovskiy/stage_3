@@ -3,7 +3,7 @@
     <div class="side-block"></div>
 
     <div class="center-block">
-      <div class="logo"></div>
+      <div class="logo" (click)="goHome()"></div>
 
       <form class="search-form" (submit)="onSearch()">
         <mat-form-field appearance="standard">
@@ -22,7 +22,7 @@
     <div class="side-block">
       <span class="user-name" [innerText]="userService.username"></span>
 
-      <button mat-mini-fab color="primary" class="auth_btn">
+      <button mat-mini-fab color="primary" class="auth_btn" (click)="goLogin()">
         <mat-icon fontIcon="account_circle"></mat-icon>
       </button>
       <button
