@@ -11,6 +11,6 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 @NgModule({
   declarations: [HeaderComponent, FiltersComponent, NotFoundComponent],
   imports: [CommonModule, FormsModule, SharedModule],
-  exports: [HeaderComponent, FiltersComponent], // m.b. refactor to MainPageComponent
+  exports: [HeaderComponent, FiltersComponent, NotFoundComponent],
 })
 export class CoreModule {}
