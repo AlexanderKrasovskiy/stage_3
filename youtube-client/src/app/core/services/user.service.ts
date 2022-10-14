@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
-  username = 'Your Name';
+  username = localStorage.getItem('loggedIn') || 'Your Name';
 }
