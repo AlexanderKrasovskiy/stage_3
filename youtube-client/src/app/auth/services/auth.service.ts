@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AuthService {
   login = '';
   password = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   onLogin() {
     if (!this.login.trim() || !this.password.trim()) return;
@@ -21,11 +22,15 @@ export class AuthService {
 
     this.login = '';
     this.password = '';
+
+    this.router.navigateByUrl('/main');
   }
 
   onLogout() {
     localStorage.removeItem('loggedIn');
     this.userService.username = 'Your Name';
+
+    this.router.navigateByUrl('/auth');
   }
 
   get isLoggedIn() {
