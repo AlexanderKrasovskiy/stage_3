@@ -1,4 +1,4 @@
-<mat-card appBorderHighlight [dateOfPublishing]="item.snippet.publishedAt">
+<mat-card>
   <img mat-card-image [src]="item.snippet.thumbnails.medium.url" />
   <mat-card-actions>
     <div class="card-stats">
@@ -26,4 +26,7 @@
   <div class="button-container">
     <button mat-raised-button color="primary">more...</button>
   </div>
+  <mat-card-footer
+    appBackgroundHighlight
+    [dateOfPublishing]="item.snippet.publishedAt"></mat-card-footer>
 </mat-card>
