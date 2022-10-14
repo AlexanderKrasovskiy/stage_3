@@ -35,7 +35,7 @@ type Thumbnail = {
   height: number;
 };
 
-type Statistics = {
+export type Statistics = {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
