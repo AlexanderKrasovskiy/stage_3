@@ -24,6 +24,6 @@ import { DetailsPageComponent } from './pages/details-page/details-page.componen
     DetailsPageComponent,
   ],
   imports: [CommonModule, YoutubeRoutingModule, SharedModule],
-  exports: [SearchListComponent],
+  exports: [SearchListComponent, DetailsPageComponent],
 })
 export class YoutubeModule {}
