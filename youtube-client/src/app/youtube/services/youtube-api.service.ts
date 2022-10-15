@@ -8,15 +8,15 @@ import data from './mock-response.json';
 })
 export class YoutubeApiService {
   query: string = '';
-  items: YtItem[] = data.items;
+  items: YtItem[] = [];
 
   constructor(private router: Router) {}
 
   onSearch(): void {
     if (!this.query || !this.query.trim()) return;
-
     this.query = this.query.trim().toLowerCase();
 
+    this.items = data.items;
     this.query = '';
   }
 

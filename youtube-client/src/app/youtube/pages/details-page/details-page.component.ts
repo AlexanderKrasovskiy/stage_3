@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { YtItem } from '../../models/search-item.model';
 import { YoutubeApiService } from '../../services/youtube-api.service';
+import { FiltersService } from '../../../core/services/filters.service';
 
 @Component({
   selector: 'app-details-page',
@@ -16,6 +17,7 @@ export class DetailsPageComponent implements OnInit {
     private route: ActivatedRoute,
     private youtubeApiService: YoutubeApiService,
     private location: Location,
+    private filtersService: FiltersService,
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +28,8 @@ export class DetailsPageComponent implements OnInit {
     if (videoItem) {
       this.item = videoItem;
     }
+
+    this.filtersService.isVisible = false;
   }
 
   goBack(): void {
