@@ -32,7 +32,7 @@ export class HeaderComponent {
   }
 
   goHome() {
-    this.router.navigate(['main']);
+    this.router.navigate(['']);
   }
 
   goLogin() {
