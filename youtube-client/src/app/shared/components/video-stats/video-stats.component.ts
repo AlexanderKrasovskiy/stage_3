@@ -7,5 +7,5 @@ import { Statistics } from 'src/app/youtube/models/search-item.model';
   styleUrls: ['./video-stats.component.scss'],
 })
 export class VideoStatsComponent {
-  @Input() statistics!: Statistics;
+  @Input() statistics?: Statistics;
 }

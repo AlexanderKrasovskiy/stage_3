@@ -11,7 +11,7 @@ import { FiltersService } from '../../../core/services/filters.service';
   styleUrls: ['./details-page.component.scss'],
 })
 export class DetailsPageComponent implements OnInit {
-  item!: YtItem;
+  item?: YtItem;
 
   constructor(
     private route: ActivatedRoute,
