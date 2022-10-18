@@ -15,10 +15,10 @@ export class AuthService {
   }
 
   onLogin() {
-    if (!this.login.trim() || !this.password.trim()) return;
-
     this.login = this.login.trim();
     this.password = this.password.trim();
+
+    if (!this.login || !this.password) return;
 
     localStorage.setItem('loggedIn', this.login);
     this.isLoggedIn = true;
