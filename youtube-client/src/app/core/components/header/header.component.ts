@@ -15,7 +15,7 @@ export class HeaderComponent {
     private filtersService: FiltersService,
     public youtubeApiService: YoutubeApiService,
     public userService: UserService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
   ) {}
 

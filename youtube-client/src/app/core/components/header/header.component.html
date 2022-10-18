@@ -5,7 +5,10 @@
     <div class="center-block">
       <div class="logo" (click)="goHome()"></div>
 
-      <form class="search-form" (submit)="onSearch()">
+      <form
+        class="search-form"
+        [ngClass]="{ hidden: !authService.isLoggedIn }"
+        (submit)="onSearch()">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
           <input matInput name="query" [(ngModel)]="youtubeApiService.query" />
@@ -14,7 +17,11 @@
         <button mat-raised-button color="primary">Search</button>
       </form>
 
-      <button mat-mini-fab color="primary" (click)="toggleFilters()">
+      <button
+        mat-mini-fab
+        color="primary"
+        [ngClass]="{ hidden: !authService.isLoggedIn }"
+        (click)="toggleFilters()">
         <mat-icon fontIcon="tune"></mat-icon>
       </button>
     </div>

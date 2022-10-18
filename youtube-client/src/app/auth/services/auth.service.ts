@@ -8,8 +8,11 @@ import { UserService } from 'src/app/core/services/user.service';
 export class AuthService {
   login = '';
   password = '';
+  isLoggedIn = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {
+    this.isLoggedIn = !!localStorage.getItem('loggedIn');
+  }
 
   onLogin() {
     if (!this.login.trim() || !this.password.trim()) return;
@@ -18,6 +21,7 @@ export class AuthService {
     this.password = this.password.trim();
 
     localStorage.setItem('loggedIn', this.login);
+    this.isLoggedIn = true;
     this.userService.username = this.login;
 
     this.login = '';
@@ -28,13 +32,9 @@ export class AuthService {
 
   onLogout() {
     localStorage.removeItem('loggedIn');
+    this.isLoggedIn = false;
     this.userService.username = 'Your Name';
 
     this.router.navigateByUrl('/auth');
-  }
-
-  get isLoggedIn() {
-    if (localStorage.getItem('loggedIn')) return true;
-    return false;
   }
 }
