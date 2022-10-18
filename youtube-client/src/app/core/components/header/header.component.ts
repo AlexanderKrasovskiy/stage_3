@@ -34,8 +34,4 @@ export class HeaderComponent {
   goHome() {
     this.router.navigate(['']);
   }
-
-  goLogin() {
-    this.router.navigate(['auth']);
-  }
 }
