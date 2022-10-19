@@ -1,0 +1,17 @@
+<mat-card>
+  <img mat-card-image [src]="item.snippet.thumbnails.medium.url" />
+  <mat-card-actions>
+    <app-video-stats [statistics]="item.statistics"></app-video-stats>
+  </mat-card-actions>
+  <mat-card-title class="card-title">{{
+    (item.snippet.title | slice: 0:33) + '...'
+  }}</mat-card-title>
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="onDetails()">
+      more...
+    </button>
+  </div>
+  <mat-card-footer
+    appBackgroundHighlight
+    [dateOfPublishing]="item.snippet.publishedAt"></mat-card-footer>
+</mat-card>

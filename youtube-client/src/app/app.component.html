@@ -1,8 +1,3 @@
-<app-header
-  (toggle)="toggleFilters()"
-  (search)="getResponse($event)"></app-header>
-<app-filters
-  (dateOrder)="setDateOrder($event)"
-  (viewsOrder)="setViewsOrder($event)"
-  (wordFilter)="setWordFilter($event)"></app-filters>
-<app-search-list></app-search-list>
+<app-header></app-header>
+<app-filters></app-filters>
+<router-outlet></router-outlet>

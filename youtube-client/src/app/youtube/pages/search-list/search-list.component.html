@@ -1,0 +1,10 @@
+<div class="container results-list" *ngIf="youtubeApiService.items">
+  <app-search-card
+    *ngFor="
+      let item of youtubeApiService.items
+        | sortByDate: filtersService.dateSortOrder
+        | sortByViews: filtersService.viewsSortOrder
+        | filterByWord: filtersService.word
+    "
+    [item]="item"></app-search-card>
+</div>

@@ -1,0 +1,26 @@
+<div class="container details_container">
+  <div class="card_container">
+    <div
+      class="back_btn"
+      appBackgroundHighlight
+      [dateOfPublishing]="item?.snippet?.publishedAt"
+      (click)="goBack()">
+      &lt;
+    </div>
+    <img [src]="item?.snippet?.thumbnails?.standard?.url" class="details_img" />
+    <div
+      class="card"
+      appBorderHighlight
+      [dateOfPublishing]="item?.snippet?.publishedAt">
+      <div class="info_block">
+        <h4 class="card_title">{{ item?.snippet?.title }}</h4>
+        <div class="card_subtitle">{{ item?.snippet?.publishedAt | date }}</div>
+        <h5 class="description_title">Description:</h5>
+        <p class="card_description">{{ item?.snippet?.description }}</p>
+      </div>
+      <div class="stats_block">
+        <app-video-stats [statistics]="item?.statistics"></app-video-stats>
+      </div>
+    </div>
+  </div>
+</div>
