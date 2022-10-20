@@ -7,7 +7,7 @@
 
       <form
         class="search-form"
-        [ngClass]="{ hidden: !authService.isLoggedIn }"
+        [ngClass]="{ hidden: !isLoggedIn }"
         (input)="onInput($event)">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
@@ -18,7 +18,7 @@
       <button
         mat-mini-fab
         color="primary"
-        [ngClass]="{ hidden: !authService.isLoggedIn }"
+        [ngClass]="{ hidden: !isLoggedIn }"
         (click)="toggleFilters()">
         <mat-icon fontIcon="tune"></mat-icon>
       </button>
@@ -31,14 +31,14 @@
         mat-mini-fab
         color="primary"
         class="auth_btn"
-        [ngClass]="{ hidden: authService.isLoggedIn }">
+        [ngClass]="{ hidden: isLoggedIn }">
         <mat-icon fontIcon="account_circle"></mat-icon>
       </button>
       <button
         mat-mini-fab
         color="primary"
         class="auth_btn"
-        [ngClass]="{ hidden: !authService.isLoggedIn }"
+        [ngClass]="{ hidden: !isLoggedIn }"
         (click)="onLogout()">
         <mat-icon fontIcon="logout"></mat-icon>
       </button>

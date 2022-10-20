@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { YoutubeApiService } from 'src/app/youtube/services/youtube-api.service';
@@ -10,7 +10,9 @@ import { UserService } from '../../services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  isLoggedIn = false;
+
   constructor(
     private filtersService: FiltersService,
     public youtubeApiService: YoutubeApiService,
@@ -18,6 +20,12 @@ export class HeaderComponent {
     public authService: AuthService,
     private router: Router,
   ) {}
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe((res) => {
+      this.isLoggedIn = res;
+    });
+  }
 
   onInput(event: Event): void {
     const target = event.target as HTMLInputElement;
