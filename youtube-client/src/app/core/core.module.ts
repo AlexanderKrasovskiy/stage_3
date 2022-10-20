@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -9,7 +10,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [HeaderComponent, FiltersComponent, NotFoundComponent],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, HttpClientModule],
   exports: [HeaderComponent, FiltersComponent, NotFoundComponent],
 })
 export class CoreModule {}

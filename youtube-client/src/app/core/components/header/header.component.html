@@ -8,13 +8,11 @@
       <form
         class="search-form"
         [ngClass]="{ hidden: !authService.isLoggedIn }"
-        (submit)="onSearch()">
+        (input)="onInput($event)">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
-          <input matInput name="query" [(ngModel)]="youtubeApiService.query" />
+          <input matInput />
         </mat-form-field>
-
-        <button mat-raised-button color="primary">Search</button>
       </form>
 
       <button

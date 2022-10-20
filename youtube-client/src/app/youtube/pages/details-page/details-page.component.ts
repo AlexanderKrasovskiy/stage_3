@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Observable, tap } from 'rxjs';
 import { YtItem } from '../../models/search-item.model';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 import { FiltersService } from '../../../core/services/filters.service';
@@ -11,30 +11,26 @@ import { FiltersService } from '../../../core/services/filters.service';
   styleUrls: ['./details-page.component.scss'],
 })
 export class DetailsPageComponent implements OnInit {
-  item?: YtItem;
+  item$!: Observable<YtItem>;
 
   constructor(
     private route: ActivatedRoute,
     private youtubeApiService: YoutubeApiService,
-    private location: Location,
     private filtersService: FiltersService,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
-    const { id } = this.route.snapshot.params;
-    const videoItem = this.youtubeApiService.items.find(
-      (item) => item.id === id,
+    this.filtersService.isVisible = false;
+    const id = this.route.snapshot.params['id'] as string;
+    this.item$ = this.youtubeApiService.searchById(id).pipe(
+      tap((item) => {
+        if (!item) this.router.navigate(['404']);
+      }),
     );
-    if (videoItem) {
-      this.item = videoItem;
-      this.filtersService.isVisible = false;
-      return;
-    }
-    this.router.navigate(['404']);
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['']);
   }
 }

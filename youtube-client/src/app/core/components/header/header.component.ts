@@ -19,8 +19,9 @@ export class HeaderComponent {
     private router: Router,
   ) {}
 
-  onSearch(): void {
-    this.youtubeApiService.onSearch();
+  onInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.youtubeApiService.searchText$.next(target.value);
   }
 
   toggleFilters(): void {

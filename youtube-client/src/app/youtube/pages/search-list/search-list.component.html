@@ -1,7 +1,7 @@
-<div class="container results-list" *ngIf="youtubeApiService.items">
+<div class="container results-list" *ngIf="youtubeApiService.items as items">
   <app-search-card
     *ngFor="
-      let item of youtubeApiService.items
+      let item of items
         | sortByDate: filtersService.dateSortOrder
         | sortByViews: filtersService.viewsSortOrder
         | filterByWord: filtersService.word
