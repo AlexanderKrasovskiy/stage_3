@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, catchError, of, map, switchMap, Observable } from 'rxjs';
+import { YTApiRoutes } from 'src/app/shared/constants';
 import { YtItem } from '../models/search-item.model';
 import { YtResponse, YtVideoResponse } from '../models/search-response.model';
 
@@ -20,9 +21,9 @@ export class YoutubeApiService {
   }
 
   searchVideos(query: string) {
-    const baseURL = 'https://www.googleapis.com/youtube/v3';
-    const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
-    const URL = `${baseURL}/search?${API_KEY}&type=video&part=snippet&maxResults=15&q=${query}`;
+    // const baseURL = 'https://www.googleapis.com/youtube/v3';
+    // const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
+    const URL = `${YTApiRoutes.search}?type=video&part=snippet&maxResults=15&q=${query}`;
 
     return this.http.get<YtVideoResponse>(URL).pipe(
       map((res) =>
@@ -41,9 +42,11 @@ export class YoutubeApiService {
   }
 
   searchWithStats(idsArr: string[]) {
-    const baseURL = 'https://www.googleapis.com/youtube/v3';
-    const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
-    const URL = `${baseURL}/videos?${API_KEY}&id=${idsArr.join()}&part=snippet,statistics`;
+    // const baseURL = 'https://www.googleapis.com/youtube/v3';
+    // const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
+    const URL = `${
+      YTApiRoutes.videos
+    }?id=${idsArr.join()}&part=snippet,statistics`;
 
     return this.http.get<YtResponse>(URL).pipe(
       map((res) => {
@@ -60,9 +63,9 @@ export class YoutubeApiService {
   }
 
   searchById(id: string) {
-    const baseURL = 'https://www.googleapis.com/youtube/v3';
-    const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
-    const URL = `${baseURL}/videos?${API_KEY}&id=${id}&part=snippet,statistics`;
+    // const baseURL = 'https://www.googleapis.com/youtube/v3';
+    // const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
+    const URL = `${YTApiRoutes.search}?id=${id}&part=snippet,statistics`;
 
     return this.http.get<YtResponse>(URL).pipe(
       map((res) => {
