@@ -21,8 +21,6 @@ export class YoutubeApiService {
   }
 
   searchVideos(query: string) {
-    // const baseURL = 'https://www.googleapis.com/youtube/v3';
-    // const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
     const URL = `${YTApiRoutes.search}?type=video&part=snippet&maxResults=15&q=${query}`;
 
     return this.http.get<YtVideoResponse>(URL).pipe(
@@ -42,8 +40,6 @@ export class YoutubeApiService {
   }
 
   searchWithStats(idsArr: string[]) {
-    // const baseURL = 'https://www.googleapis.com/youtube/v3';
-    // const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
     const URL = `${
       YTApiRoutes.videos
     }?id=${idsArr.join()}&part=snippet,statistics`;
@@ -63,9 +59,7 @@ export class YoutubeApiService {
   }
 
   searchById(id: string) {
-    // const baseURL = 'https://www.googleapis.com/youtube/v3';
-    // const API_KEY = 'key=AIzaSyCfrsMMh1eYeg9x-s39Sk9mlZoYhkQNMLk';
-    const URL = `${YTApiRoutes.search}?id=${id}&part=snippet,statistics`;
+    const URL = `${YTApiRoutes.videos}?id=${id}&part=snippet,statistics`;
 
     return this.http.get<YtResponse>(URL).pipe(
       map((res) => {
