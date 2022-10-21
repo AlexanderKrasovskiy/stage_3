@@ -71,9 +71,12 @@
       </mat-error>
     </mat-form-field>
 
-    <button class="form_button" mat-raised-button color="primary">
+    <button
+      class="form_button"
+      mat-raised-button
+      color="primary"
+      [disabled]="!createForm.valid">
       Create card
     </button>
   </form>
 </div>
-<!-- [disabled]="!adminForm.valid" -->
