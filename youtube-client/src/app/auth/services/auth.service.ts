@@ -7,26 +7,18 @@ import { UserService } from 'src/app/core/services/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  login = '';
-  password = '';
   isLoggedIn$ = new ReplaySubject<boolean>();
 
   constructor(private userService: UserService, private router: Router) {
     this.isLoggedIn$.next(!!localStorage.getItem('loggedIn'));
   }
 
-  onLogin() {
-    this.login = this.login.trim();
-    this.password = this.password.trim();
+  onLogin(login: string, password: string) {
+    if (!login || !password) return;
 
-    if (!this.login || !this.password) return;
-
-    localStorage.setItem('loggedIn', this.login);
+    localStorage.setItem('loggedIn', login);
     this.isLoggedIn$.next(true);
-    this.userService.username = this.login;
-
-    this.login = '';
-    this.password = '';
+    this.userService.username = login;
 
     this.router.navigateByUrl('/main');
   }

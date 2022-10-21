@@ -1,4 +1,12 @@
 import { Component } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -7,9 +15,54 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./log-in-page.component.scss'],
 })
 export class LogInPageComponent {
-  constructor(public authService: AuthService) {}
+  loginForm: FormGroup = this.fb.group({
+    login: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, this.passwordStrengthValidator()]],
+  });
+
+  get login() {
+    return this.loginForm.controls['login'];
+  }
+
+  get password() {
+    return this.loginForm.controls['password'];
+  }
+
+  constructor(public authService: AuthService, private fb: FormBuilder) {}
 
   onLogin() {
-    this.authService.onLogin();
+    const { login, password } = this.loginForm.value as Record<string, string>;
+    this.authService.onLogin(login.trim(), password.trim());
+  }
+
+  passwordStrengthValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value as string;
+      if (!value) return null;
+
+      const isLong = value.length >= 8;
+      const hasUppercase = /[A-Z]+/.test(value);
+      const hasLowercase = /[a-z]+/.test(value);
+      const hasNumbers = /[0-9]+/.test(value);
+      const hasSpecialChars = /[!@#?\]_]+/.test(value);
+
+      let errorText = "Your password isn't strong enough, it should have: ";
+      const reasons: string[] = [];
+
+      /* eslint-disable @typescript-eslint/no-unused-expressions */
+      !isLong && reasons.push('at least 8 characters');
+      (!hasUppercase || !hasLowercase) &&
+        reasons.push('both uppercase and lowercase letters');
+      !hasNumbers && reasons.push('numbers');
+      !hasSpecialChars &&
+        reasons.push('at least one special character: ! @ # ? ] _');
+
+      errorText += reasons.join(', ');
+
+      const isValid =
+        isLong && hasUppercase && hasLowercase && hasNumbers && hasSpecialChars;
+
+      return isValid ? null : { passwordStrength: errorText };
+    };
   }
 }

@@ -1,27 +1,42 @@
 <div class="container login_page">
-  <form class="login_form" (submit)="onLogin()">
+  <form class="login_form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <h3 class="form_title">Login</h3>
 
     <mat-form-field appearance="fill">
       <mat-label>login</mat-label>
-      <input
-        type="text"
-        name="login"
-        required
-        matInput
-        [(ngModel)]="authService.login" />
+      <input type="text" matInput formControlName="login" />
+
+      <mat-error *ngIf="login.invalid && login.touched">
+        <mat-error *ngIf="login.errors?.['required']"
+          >Please enter a login email</mat-error
+        >
+        <mat-error *ngIf="login.errors?.['email']"
+          >The login email is invalid</mat-error
+        >
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>password</mat-label>
-      <input
-        type="password"
-        name="password"
-        required
-        matInput
-        [(ngModel)]="authService.password" />
+      <input type="password" matInput formControlName="password" />
+
+      <mat-error *ngIf="password.invalid && password.touched">
+        <mat-error *ngIf="password.errors?.['required']"
+          >Please enter a password</mat-error
+        >
+        <mat-error
+          *ngIf="password.errors?.['passwordStrength']"
+          >{{ password.errors?.['passwordStrength'] }}</mat-error
+        >
+      </mat-error>
     </mat-form-field>
 
-    <button class="form_button" mat-raised-button color="primary">Login</button>
+    <button
+      class="form_button"
+      mat-raised-button
+      color="primary"
+      [disabled]="!loginForm.valid">
+      Login
+    </button>
   </form>
 </div>
