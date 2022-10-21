@@ -1,0 +1,79 @@
+<div class="container admin_page">
+  <form class="admin_form" [formGroup]="createForm" (ngSubmit)="onCreate()">
+    <h3 class="form_title">Create new card</h3>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" />
+
+      <mat-error *ngIf="title.invalid && title.touched">
+        <mat-error *ngIf="title.errors?.['required']"
+          >Please enter a title</mat-error
+        >
+        <mat-error *ngIf="title.errors?.['minlength']"
+          >The title is too short</mat-error
+        >
+        <mat-error *ngIf="title.errors?.['maxlength']"
+          >The title is too long</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input type="text" matInput formControlName="description" />
+
+      <mat-error *ngIf="description.invalid && description.touched">
+        <mat-error *ngIf="description.errors?.['maxlength']"
+          >The description is too long</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Img link</mat-label>
+      <input type="text" matInput formControlName="imglink" />
+
+      <mat-error *ngIf="imglink.invalid && imglink.touched">
+        <mat-error *ngIf="imglink.errors?.['required']"
+          >Please enter a link to the image</mat-error
+        >
+        <mat-error *ngIf="imglink.errors?.['urlCheck']"
+          >The image link is invalid</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Video link</mat-label>
+      <input type="text" matInput formControlName="videolink" />
+
+      <mat-error *ngIf="videolink.invalid && videolink.touched">
+        <mat-error *ngIf="videolink.errors?.['required']"
+          >Please enter a link to the video</mat-error
+        >
+        <mat-error *ngIf="videolink.errors?.['urlCheck']"
+          >The video link is invalid</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Creation date</mat-label>
+      <input type="date" matInput formControlName="date" />
+      <mat-error *ngIf="date.invalid && date.touched">
+        <mat-error *ngIf="date.errors?.['required']"
+          >Please enter a creation date</mat-error
+        >
+        <mat-error *ngIf="date.errors?.['dateCheck']"
+          >The date is invalid</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <button class="form_button" mat-raised-button color="primary">
+      Create card
+    </button>
+  </form>
+</div>
+<!-- [disabled]="!adminForm.valid" -->

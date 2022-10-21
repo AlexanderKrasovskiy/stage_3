@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
     this.authService.onLogout();
   }
 
-  goHome() {
-    this.router.navigate(['']);
+  toAdmin() {
+    this.router.navigate(['admin']);
   }
 }
