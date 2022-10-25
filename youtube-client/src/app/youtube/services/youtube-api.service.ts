@@ -76,4 +76,8 @@ export class YoutubeApiService {
   onDetails(id: string) {
     this.router.navigate(['main', id]);
   }
+
+  clearSearchResults() {
+    this.items = [];
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -14,6 +15,7 @@ import { UserService } from '../../services/user.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   authSubscription?: Subscription;
+  searchInput = new FormControl();
 
   constructor(
     private filtersService: FiltersService,
@@ -44,6 +46,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.onLogout();
+    this.searchInput.reset();
+    this.youtubeApiService.clearSearchResults();
   }
 
   toAdmin() {
