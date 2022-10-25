@@ -9,9 +9,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class AuthService {
   isLoggedIn$ = new ReplaySubject<boolean>();
 
-  constructor(private userService: UserService, private router: Router) {
-    this.isLoggedIn$.next(!!localStorage.getItem('loggedIn'));
-  }
+  constructor(private userService: UserService, private router: Router) {}
 
   onLogin(login: string, password: string) {
     if (!login || !password) return;
