@@ -2,9 +2,9 @@ import { createReducer, on } from '@ngrx/store';
 import { AdminCardType } from '../state.models';
 import { createCardAction, deleteAdminCards } from '../actions/admin.actions';
 
-export type AdminCardsState = AdminCardType[];
+type AdminCardsState = AdminCardType[];
 
-export const initialState: AdminCardsState = [];
+const initialState: AdminCardsState = [];
 
 export const adminCardsReducer = createReducer(
   initialState,

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { YoutubeApiEffects } from './redux/effects/youtube-api.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     CoreModule,
     StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([YoutubeApiEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

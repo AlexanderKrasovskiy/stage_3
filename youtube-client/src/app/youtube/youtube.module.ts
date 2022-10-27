@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 
 import { SharedModule } from '../shared/shared.module';
@@ -14,6 +15,7 @@ import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { BorderHighlightDirective } from './directives/border-highlight.directive';
 import { CustomCardComponent } from './components/custom-card/custom-card.component';
+import { apiVideosReducer } from '../redux/reducers/youtube-api.reducer';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,12 @@ import { CustomCardComponent } from './components/custom-card/custom-card.compon
     BorderHighlightDirective,
     CustomCardComponent,
   ],
-  imports: [CommonModule, YoutubeRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    YoutubeRoutingModule,
+    SharedModule,
+    StoreModule.forFeature('youtubeApiState', apiVideosReducer),
+  ],
   exports: [SearchListComponent, DetailsPageComponent],
 })
 export class YoutubeModule {}

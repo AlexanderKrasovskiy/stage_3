@@ -5,10 +5,7 @@
     <div class="center-block">
       <div class="logo" (click)="toAdmin()"></div>
 
-      <form
-        class="search-form"
-        [ngClass]="{ hidden: !isLoggedIn }"
-        (input)="onInput($event)">
+      <form class="search-form" [ngClass]="{ hidden: !isLoggedIn }">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
           <input matInput [formControl]="searchInput" />

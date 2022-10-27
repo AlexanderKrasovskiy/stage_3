@@ -1,3 +1,5 @@
+import { YtVideosState } from './reducers/youtube-api.reducer';
+
 export type AdminCardType = {
   title: string;
   description: string;
@@ -8,4 +10,5 @@ export type AdminCardType = {
 
 export type AppState = {
   adminCards: AdminCardType[];
+  youtubeApiState: YtVideosState;
 };

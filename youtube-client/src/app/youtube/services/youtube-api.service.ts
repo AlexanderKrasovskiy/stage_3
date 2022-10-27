@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, catchError, of, map, switchMap, Observable } from 'rxjs';
+import { catchError, of, map, switchMap, Observable } from 'rxjs';
 import { YTApiRoutes } from 'src/app/shared/constants';
 import { YtItem } from '../models/search-item.model';
 import { YtResponse, YtVideoResponse } from '../models/search-response.model';
@@ -10,15 +10,7 @@ import { YtResponse, YtVideoResponse } from '../models/search-response.model';
   providedIn: 'root',
 })
 export class YoutubeApiService {
-  searchText$ = new Subject<string>();
-  items?: YtItem[];
-
   constructor(private router: Router, private http: HttpClient) {}
-
-  onInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.searchText$.next(target.value);
-  }
 
   searchVideos(query: string) {
     const URL = `${YTApiRoutes.search}?type=video&part=snippet&maxResults=15&q=${query}`;
@@ -51,7 +43,6 @@ export class YoutubeApiService {
           tempItem.statistics.dislikeCount = `${randomDislikes}`;
           return tempItem;
         });
-        this.items = res.items;
         return res.items;
       }),
     );
@@ -75,9 +66,5 @@ export class YoutubeApiService {
 
   onDetails(id: string) {
     this.router.navigate(['main', id]);
-  }
-
-  clearSearchResults() {
-    this.items = [];
   }
 }
