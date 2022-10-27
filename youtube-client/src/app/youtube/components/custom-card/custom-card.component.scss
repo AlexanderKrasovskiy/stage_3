@@ -4,10 +4,20 @@
   max-width: 263px;
 }
 
-.mat-card-image {
+.img-container {
   width: 295px;
   height: 165.938px;
+  max-width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
+
+// .mat-card-image {
+//   height: 100%;
+//   width: fit-content;
+//   margin: 0 auto;
+// }
 
 .mat-card-title {
   text-align: center;

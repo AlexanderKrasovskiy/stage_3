@@ -1,5 +1,7 @@
 <mat-card>
-  <img mat-card-image [src]="card.imglink" alt="Invalid Img Link" />
+  <div
+    class="img-container"
+    [ngStyle]="{ 'background-image': 'url(' + card.imglink + ')' }"></div>
   <mat-card-actions>
     <app-video-stats [statistics]="defaultStats"></app-video-stats>
   </mat-card-actions>
