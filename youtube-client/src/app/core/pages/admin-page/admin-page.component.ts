@@ -57,9 +57,8 @@ export class AdminPageComponent {
 
   onCreate() {
     const cardData = this.createForm.value as AdminCardType;
-    console.log(cardData);
     this.store.dispatch(createCardAction(cardData));
-    // this.router.navigate(['']);
+    this.router.navigate(['']);
   }
 
   urlValidator(): ValidatorFn {

@@ -1,4 +1,8 @@
-<div>{{ customCards$ | async | json }}</div>
+<div class="container results-list">
+  <app-custom-card
+    *ngFor="let card of customCards$ | async"
+    [card]="card"></app-custom-card>
+</div>
 <div class="container results-list" *ngIf="youtubeApiService.items as items">
   <app-search-card
     *ngFor="

@@ -1,0 +1,17 @@
+<mat-card>
+  <img mat-card-image [src]="card.imglink" alt="Invalid Img Link" />
+  <mat-card-actions>
+    <app-video-stats [statistics]="defaultStats"></app-video-stats>
+  </mat-card-actions>
+  <mat-card-title class="card-title">{{
+    (card.title | slice: 0:33) + '...'
+  }}</mat-card-title>
+  <div class="button-container">
+    <a [href]="card.videolink" target="_blank">
+      <button mat-raised-button color="primary">Video Link</button>
+    </a>
+  </div>
+  <mat-card-footer
+    appBackgroundHighlight
+    [dateOfPublishing]="card.date"></mat-card-footer>
+</mat-card>
