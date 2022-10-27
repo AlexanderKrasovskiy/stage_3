@@ -5,3 +5,7 @@ export type AdminCardType = {
   videolink: string;
   date: string;
 };
+
+export type AppState = {
+  adminCards: AdminCardType[];
+};

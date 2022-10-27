@@ -7,6 +7,9 @@ import {
   map,
   switchMap,
 } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectAllAdminCards } from 'src/app/redux/selectors/admin.selectors';
+import { AppState } from 'src/app/redux/state.models';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 
 @Component({
@@ -15,9 +18,12 @@ import { YoutubeApiService } from '../../services/youtube-api.service';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent implements OnInit {
+  customCards$ = this.store.select(selectAllAdminCards);
+
   constructor(
     public filtersService: FiltersService,
     public youtubeApiService: YoutubeApiService,
+    private store: Store<AppState>,
   ) {}
 
   ngOnInit() {
