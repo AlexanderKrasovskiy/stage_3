@@ -8,6 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { createCardAction } from 'src/app/redux/actions/admin.actions';
+import { Store } from '@ngrx/store';
+import { AdminCardType } from '../../../redux/state.models';
 
 @Component({
   selector: 'app-admin-page',
@@ -23,7 +26,7 @@ export class AdminPageComponent {
     description: ['', Validators.maxLength(255)],
     imglink: ['', [Validators.required, this.urlValidator()]],
     videolink: ['', [Validators.required, this.urlValidator()]],
-    date: [null, [Validators.required, this.dateValidator()]],
+    date: ['', [Validators.required, this.dateValidator()]],
   });
 
   get title() {
@@ -46,10 +49,17 @@ export class AdminPageComponent {
     return this.createForm.controls['date'];
   }
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store,
+  ) {}
 
   onCreate() {
-    this.router.navigate(['']);
+    const cardData = this.createForm.value as AdminCardType;
+    console.log(cardData);
+    this.store.dispatch(createCardAction(cardData));
+    // this.router.navigate(['']);
   }
 
   urlValidator(): ValidatorFn {
