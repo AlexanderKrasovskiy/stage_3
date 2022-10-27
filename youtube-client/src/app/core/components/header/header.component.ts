@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { YoutubeApiService } from 'src/app/youtube/services/youtube-api.service';
+import { deleteAdminCards } from 'src/app/redux/actions/admin.actions';
 import { FiltersService } from '../../services/filters.service';
 import { UserService } from '../../services/user.service';
 
@@ -23,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public userService: UserService,
     public authService: AuthService,
     private router: Router,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.onLogout();
     this.searchInput.reset();
     this.youtubeApiService.clearSearchResults();
+    this.store.dispatch(deleteAdminCards());
   }
 
   toAdmin() {

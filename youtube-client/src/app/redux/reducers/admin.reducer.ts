@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { AdminCardType } from '../state.models';
-import { createCardAction } from '../actions/admin.actions';
+import { createCardAction, deleteAdminCards } from '../actions/admin.actions';
 
 export type AdminCardsState = AdminCardType[];
 
@@ -12,4 +12,5 @@ export const adminCardsReducer = createReducer(
     createCardAction,
     (state, payload): AdminCardsState => [...state, payload],
   ),
+  on(deleteAdminCards, (): AdminCardsState => []),
 );

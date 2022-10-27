@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 const ADMIN_CREATE = '[Admin Page] Create Card';
+const ADMIN_DELETE = '[Header Logout] Delete Admin Cards';
 
 export const createCardAction = createAction(
   ADMIN_CREATE,
@@ -12,3 +13,5 @@ export const createCardAction = createAction(
     date: string;
   }>(),
 );
+
+export const deleteAdminCards = createAction(ADMIN_DELETE);
