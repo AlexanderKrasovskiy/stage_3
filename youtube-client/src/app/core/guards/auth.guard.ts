@@ -7,7 +7,13 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanLoad, CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  private isLoggedIn = false;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.isLoggedIn$.subscribe((res) => {
+      this.isLoggedIn = res;
+    });
+  }
 
   canLoad(): boolean {
     return this.checkAuth();
@@ -18,7 +24,7 @@ export class AuthGuard implements CanLoad, CanActivate {
   }
 
   private checkAuth() {
-    if (this.authService.isLoggedIn) return true;
+    if (this.isLoggedIn) return true;
 
     this.router.navigateByUrl('/auth');
     return false;

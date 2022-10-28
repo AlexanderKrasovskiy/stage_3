@@ -9,3 +9,13 @@ export type YtResponse = {
   };
   items: YtItem[];
 };
+
+export type YtVideoResponse = {
+  items: YtIdItem[];
+};
+
+type YtIdItem = {
+  id: {
+    videoId: string;
+  };
+};

@@ -18,3 +18,8 @@ export enum ViewsSortOrder {
   descending = 'descending',
   default = '',
 }
+
+export enum YTApiRoutes {
+  search = '/search',
+  videos = '/videos',
+}

@@ -7,20 +7,18 @@
 
       <form
         class="search-form"
-        [ngClass]="{ hidden: !authService.isLoggedIn }"
-        (submit)="onSearch()">
+        [ngClass]="{ hidden: !isLoggedIn }"
+        (input)="onInput($event)">
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>
-          <input matInput name="query" [(ngModel)]="youtubeApiService.query" />
+          <input matInput />
         </mat-form-field>
-
-        <button mat-raised-button color="primary">Search</button>
       </form>
 
       <button
         mat-mini-fab
         color="primary"
-        [ngClass]="{ hidden: !authService.isLoggedIn }"
+        [ngClass]="{ hidden: !isLoggedIn }"
         (click)="toggleFilters()">
         <mat-icon fontIcon="tune"></mat-icon>
       </button>
@@ -29,14 +27,19 @@
     <div class="side-block">
       <span class="user-name" [innerText]="userService.username"></span>
 
-      <button mat-mini-fab color="primary" class="auth_btn">
+      <button
+        mat-mini-fab
+        color="primary"
+        class="auth_btn"
+        [ngClass]="{ hidden: isLoggedIn }">
         <mat-icon fontIcon="account_circle"></mat-icon>
       </button>
       <button
         mat-mini-fab
         color="primary"
-        (click)="onLogout()"
-        class="auth_btn">
+        class="auth_btn"
+        [ngClass]="{ hidden: !isLoggedIn }"
+        (click)="onLogout()">
         <mat-icon fontIcon="logout"></mat-icon>
       </button>
     </div>
