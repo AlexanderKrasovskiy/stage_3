@@ -63,4 +63,13 @@ export const apiVideosReducer = createReducer(
       currentCard: null,
     }),
   ),
+  on(
+    ApiActions.clearApiState,
+    (): YtVideosState => ({
+      items: [],
+      error: '',
+      isLoading: false,
+      currentCard: null,
+    }),
+  ),
 );

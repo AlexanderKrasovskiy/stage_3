@@ -16,7 +16,7 @@ export const createCardAction = createAction(
   }>(),
 );
 
-export const deleteAdminCards = createAction(ADMIN_DELETE);
+export const clearAdminCards = createAction(ADMIN_DELETE);
 
 export const searchAdminCardAction = createAction(
   ADMIN_SEARCH,

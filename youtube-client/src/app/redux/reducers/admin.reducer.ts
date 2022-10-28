@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { YtItem } from 'src/app/youtube/models/search-item.model';
 import {
   createCardAction,
-  deleteAdminCards,
+  clearAdminCards,
   searchAdminCardAction,
 } from '../actions/admin.actions';
 
@@ -26,7 +26,7 @@ export const adminCardsReducer = createReducer(
     }),
   ),
   on(
-    deleteAdminCards,
+    clearAdminCards,
     (): AdminCardsState => ({ items: [], currentCard: null }),
   ),
   on(

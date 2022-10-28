@@ -9,6 +9,8 @@ const LOAD_BY_ID = '[Details Page] Load API Card by ID';
 const LOAD_BY_ID_SUCCESS = '[YT API] Load API Card by ID Success';
 const LOAD_BY_ID_FAILURE = '[YT API] Load API Card by ID Failure';
 
+const CLEAR_API_STATE = '[Header Logout] Clear API State';
+
 export const loadVideosAction = createAction(
   LOAD_VIDEOS,
   props<{ query: string }>(),
@@ -35,3 +37,5 @@ export const loadByIdFailureAction = createAction(
   LOAD_BY_ID_FAILURE,
   props<{ error: string }>(),
 );
+
+export const clearApiState = createAction(CLEAR_API_STATE);
