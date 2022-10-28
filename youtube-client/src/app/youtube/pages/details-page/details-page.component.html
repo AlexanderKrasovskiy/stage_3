@@ -7,7 +7,12 @@
       (click)="goBack()">
       &lt;
     </div>
-    <img [src]="item.snippet.thumbnails.standard.url" class="details_img" />
+    <!-- <img [src]="item.snippet.thumbnails.standard.url" class="details_img" /> -->
+    <div
+      class="details_img"
+      [ngStyle]="{
+        'background-image': 'url(' + item.snippet.thumbnails.standard.url + ')'
+      }"></div>
     <div
       class="card"
       appBorderHighlight

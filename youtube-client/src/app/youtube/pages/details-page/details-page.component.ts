@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { searchAdminCardAction } from 'src/app/redux/actions/admin.actions';
 import { selectCurrentCustomCard } from 'src/app/redux/selectors/admin.selectors';
@@ -32,18 +32,10 @@ export class DetailsPageComponent implements OnInit {
 
     if (idType === 'custom') {
       this.store.dispatch(searchAdminCardAction({ id }));
-      this.item$ = this.store.select(selectCurrentCustomCard).pipe(
-        tap((item) => {
-          if (!item) this.router.navigate(['404']);
-        }),
-      );
+      this.item$ = this.store.select(selectCurrentCustomCard);
     } else {
       this.store.dispatch(loadByIdAction({ id }));
-      this.item$ = this.store.select(selectCurrentApiCard).pipe(
-        tap((item) => {
-          if (!item) this.router.navigate(['404']);
-        }),
-      );
+      this.item$ = this.store.select(selectCurrentApiCard);
     }
   }
 
