@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, of, map, switchMap, Observable } from 'rxjs';
 import { YTApiRoutes } from 'src/app/shared/constants';
 import { YtItem } from '../models/search-item.model';
@@ -10,7 +9,7 @@ import { YtResponse, YtVideoResponse } from '../models/search-response.model';
   providedIn: 'root',
 })
 export class YoutubeApiService {
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   searchVideos(query: string) {
     const URL = `${YTApiRoutes.search}?type=video&part=snippet&maxResults=15&q=${query}`;
@@ -62,9 +61,5 @@ export class YoutubeApiService {
         return res.items[0];
       }),
     );
-  }
-
-  onDetails(id: string) {
-    this.router.navigate(['main', id]);
   }
 }

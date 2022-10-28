@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { YtItem } from '../../models/search-item.model';
-import { YoutubeApiService } from '../../services/youtube-api.service';
 
 @Component({
   selector: 'app-search-card',
@@ -10,9 +10,9 @@ import { YoutubeApiService } from '../../services/youtube-api.service';
 export class SearchCardComponent {
   @Input() item!: YtItem;
 
-  constructor(private youtubeApiService: YoutubeApiService) {}
+  constructor(private router: Router) {}
 
   onDetails() {
-    this.youtubeApiService.onDetails(this.item.id);
+    this.router.navigate(['main', this.item.id]);
   }
 }
