@@ -6,7 +6,7 @@ export type YtItem = {
   statistics: Statistics;
 };
 
-type Snippet = {
+export type Snippet = {
   publishedAt: string;
   channelId: string;
   title: string;

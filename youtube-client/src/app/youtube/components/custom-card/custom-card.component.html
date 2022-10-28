@@ -1,19 +1,21 @@
 <mat-card>
   <div
     class="img-container"
-    [ngStyle]="{ 'background-image': 'url(' + card.imglink + ')' }"></div>
+    [ngStyle]="{
+      'background-image': 'url(' + card.snippet.thumbnails.medium.url + ')'
+    }"></div>
   <mat-card-actions>
-    <app-video-stats [statistics]="defaultStats"></app-video-stats>
+    <app-video-stats [statistics]="card.statistics"></app-video-stats>
   </mat-card-actions>
   <mat-card-title class="card-title">{{
-    (card.title | slice: 0:33) + '...'
+    (card.snippet.title | slice: 0:33) + '...'
   }}</mat-card-title>
   <div class="button-container">
-    <a [href]="card.videolink" target="_blank">
-      <button mat-raised-button color="primary">Watch Video</button>
-    </a>
+    <button mat-raised-button color="primary" (click)="onDetails()">
+      more...
+    </button>
   </div>
   <mat-card-footer
     appBackgroundHighlight
-    [dateOfPublishing]="card.date"></mat-card-footer>
+    [dateOfPublishing]="card.snippet.publishedAt"></mat-card-footer>
 </mat-card>

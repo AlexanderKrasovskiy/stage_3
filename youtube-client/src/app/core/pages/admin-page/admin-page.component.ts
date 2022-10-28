@@ -10,7 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { createCardAction } from 'src/app/redux/actions/admin.actions';
 import { Store } from '@ngrx/store';
-import { AdminCardType } from '../../../redux/state.models';
+import { YtItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-admin-page',
@@ -56,9 +56,55 @@ export class AdminPageComponent {
   ) {}
 
   onCreate() {
-    const cardData = this.createForm.value as AdminCardType;
+    const cardData = this.generateCardData();
     this.store.dispatch(createCardAction(cardData));
     this.router.navigate(['']);
+  }
+
+  generateCardData(): YtItem {
+    type AdminCardType = {
+      title: string;
+      description: string;
+      imglink: string;
+      videolink: string;
+      date: string;
+    };
+
+    const formValues = this.createForm.value as AdminCardType;
+    return {
+      kind: '',
+      etag: '',
+      id: `custom_${Date.now()}`,
+      snippet: {
+        publishedAt: formValues.date,
+        channelId: '',
+        title: formValues.title,
+        description: formValues.description,
+        thumbnails: {
+          default: { url: formValues.imglink, width: 0, height: 0 },
+          medium: { url: formValues.imglink, width: 0, height: 0 },
+          high: { url: formValues.imglink, width: 0, height: 0 },
+          standard: { url: formValues.imglink, width: 0, height: 0 },
+          maxres: { url: formValues.imglink, width: 0, height: 0 },
+        },
+        channelTitle: '',
+        tags: [],
+        categoryId: '',
+        liveBroadcastContent: '',
+        localized: {
+          title: formValues.title,
+          description: formValues.description,
+        },
+        defaultAudioLanguage: '',
+      },
+      statistics: {
+        viewCount: '0',
+        likeCount: '0',
+        dislikeCount: '0',
+        favoriteCount: '0',
+        commentCount: '0',
+      },
+    };
   }
 
   urlValidator(): ValidatorFn {

@@ -15,7 +15,25 @@ export class YoutubeApiEffects {
           catchError(() =>
             of(
               ApiActions.loadVideosFailureAction({
-                error: 'YT Api Response Error',
+                error: 'YT Api - Failed to Load Videos',
+              }),
+            ),
+          ),
+        ),
+      ),
+    );
+  });
+
+  loadById$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ApiActions.loadByIdAction),
+      switchMap(({ id }) =>
+        this.youtubeApiService.searchById(id).pipe(
+          map((item) => ApiActions.loadByIdSuccessAction({ item })),
+          catchError(() =>
+            of(
+              ApiActions.loadByIdFailureAction({
+                error: 'YT Api - Failed to Load Video By ID',
               }),
             ),
           ),

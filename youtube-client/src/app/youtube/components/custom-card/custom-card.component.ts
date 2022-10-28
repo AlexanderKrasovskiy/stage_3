@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { AdminCardType } from 'src/app/redux/state.models';
+import { Router } from '@angular/router';
+import { YtItem } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-custom-card',
@@ -7,12 +8,11 @@ import { AdminCardType } from 'src/app/redux/state.models';
   styleUrls: ['./custom-card.component.scss'],
 })
 export class CustomCardComponent {
-  @Input() card!: AdminCardType;
-  defaultStats = {
-    viewCount: '0',
-    likeCount: '0',
-    dislikeCount: '0',
-    favoriteCount: '0',
-    commentCount: '0',
-  };
+  @Input() card!: YtItem;
+
+  constructor(private router: Router) {}
+
+  onDetails() {
+    this.router.navigate(['main', this.card.id]);
+  }
 }

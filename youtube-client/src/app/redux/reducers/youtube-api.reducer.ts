@@ -6,12 +6,14 @@ export type YtVideosState = {
   items: YtItem[];
   error: string;
   isLoading: boolean;
+  currentCard: YtItem | null;
 };
 
 const initialState: YtVideosState = {
   items: [],
   error: '',
   isLoading: false,
+  currentCard: null,
 };
 
 export const apiVideosReducer = createReducer(
@@ -36,6 +38,29 @@ export const apiVideosReducer = createReducer(
       items: [],
       error,
       isLoading: false,
+    }),
+  ),
+  on(
+    ApiActions.loadByIdAction,
+    (state): YtVideosState => ({ ...state, isLoading: true }),
+  ),
+  on(
+    ApiActions.loadByIdSuccessAction,
+    (state, { item }): YtVideosState => ({
+      ...state,
+      error: '',
+      isLoading: false,
+      currentCard: item,
+    }),
+  ),
+  on(
+    ApiActions.loadByIdFailureAction,
+    (state, { error }): YtVideosState => ({
+      ...state,
+      items: [],
+      error,
+      isLoading: false,
+      currentCard: null,
     }),
   ),
 );

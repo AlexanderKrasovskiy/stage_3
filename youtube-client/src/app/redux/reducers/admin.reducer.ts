@@ -1,16 +1,39 @@
 import { createReducer, on } from '@ngrx/store';
-import { AdminCardType } from '../state.models';
-import { createCardAction, deleteAdminCards } from '../actions/admin.actions';
+import { YtItem } from 'src/app/youtube/models/search-item.model';
+import {
+  createCardAction,
+  deleteAdminCards,
+  searchAdminCardAction,
+} from '../actions/admin.actions';
 
-type AdminCardsState = AdminCardType[];
+export type AdminCardsState = {
+  items: YtItem[];
+  currentCard: YtItem | null;
+};
 
-const initialState: AdminCardsState = [];
+const initialState: AdminCardsState = {
+  items: [],
+  currentCard: null,
+};
 
 export const adminCardsReducer = createReducer(
   initialState,
   on(
     createCardAction,
-    (state, payload): AdminCardsState => [...state, payload],
+    (state, payload): AdminCardsState => ({
+      ...state,
+      items: [...state.items, payload],
+    }),
   ),
-  on(deleteAdminCards, (): AdminCardsState => []),
+  on(
+    deleteAdminCards,
+    (): AdminCardsState => ({ items: [], currentCard: null }),
+  ),
+  on(
+    searchAdminCardAction,
+    (state, { id }): AdminCardsState => ({
+      ...state,
+      currentCard: state.items.find((card) => card.id === id) || null,
+    }),
+  ),
 );
