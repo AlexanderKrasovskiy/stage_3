@@ -50,7 +50,6 @@ export class LogInPageComponent implements OnInit {
       const hasNumbers = /[0-9]+/.test(value);
       const hasSpecialChars = /[!@#?\]_]+/.test(value);
 
-      let errorText = "Your password isn't strong enough, it should have: ";
       const reasons: string[] = [];
 
       /* eslint-disable @typescript-eslint/no-unused-expressions */
@@ -61,7 +60,9 @@ export class LogInPageComponent implements OnInit {
       !hasSpecialChars &&
         reasons.push('at least one special character: ! @ # ? ] _');
 
-      errorText += reasons.join(', ');
+      const errorText = `Your password isn't strong enough, it should have: ${reasons.join(
+        ', ',
+      )}`;
 
       const isValid =
         isLong && hasUppercase && hasLowercase && hasNumbers && hasSpecialChars;
