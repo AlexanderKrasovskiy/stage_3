@@ -1,9 +1,9 @@
-.login_page {
+.admin_page {
   display: flex;
   justify-content: center;
 }
 
-.login_form {
+.admin_form {
   flex-basis: 350px;
   padding: 24px 20px;
   margin-top: 45px;
@@ -22,5 +22,4 @@
 .form_button {
   align-self: flex-end;
   width: 124px;
-  margin-top: 40px;
 }

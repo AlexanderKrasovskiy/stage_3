@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { YoutubeApiService } from 'src/app/youtube/services/youtube-api.service';
 import { FiltersService } from '../../services/filters.service';
@@ -10,8 +12,10 @@ import { UserService } from '../../services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
+  authSubscription?: Subscription;
+  searchInput = new FormControl();
 
   constructor(
     private filtersService: FiltersService,
@@ -22,9 +26,13 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authService.isLoggedIn$.subscribe((res) => {
+    this.authSubscription = this.authService.isLoggedIn$.subscribe((res) => {
       this.isLoggedIn = res;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription?.unsubscribe();
   }
 
   onInput(event: Event): void {
@@ -38,9 +46,11 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.onLogout();
+    this.searchInput.reset();
+    this.youtubeApiService.clearSearchResults();
   }
 
-  goHome() {
-    this.router.navigate(['']);
+  toAdmin() {
+    this.router.navigate(['admin']);
   }
 }

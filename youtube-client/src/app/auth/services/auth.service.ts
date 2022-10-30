@@ -1,32 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  login = '';
-  password = '';
-  isLoggedIn$ = new ReplaySubject<boolean>();
+  isLoggedIn$ = new BehaviorSubject<boolean>(
+    !!localStorage.getItem('loggedIn'),
+  );
 
-  constructor(private userService: UserService, private router: Router) {
-    this.isLoggedIn$.next(!!localStorage.getItem('loggedIn'));
-  }
+  constructor(private userService: UserService, private router: Router) {}
 
-  onLogin() {
-    this.login = this.login.trim();
-    this.password = this.password.trim();
+  onLogin(login: string, password: string) {
+    if (!login || !password) return;
 
-    if (!this.login || !this.password) return;
-
-    localStorage.setItem('loggedIn', this.login);
+    localStorage.setItem('loggedIn', login);
     this.isLoggedIn$.next(true);
-    this.userService.username = this.login;
-
-    this.login = '';
-    this.password = '';
+    this.userService.username = login;
 
     this.router.navigateByUrl('/main');
   }
@@ -37,5 +29,9 @@ export class AuthService {
     this.userService.username = 'Your Name';
 
     this.router.navigateByUrl('/auth');
+  }
+
+  autologin() {
+    this.isLoggedIn$.next(!!localStorage.getItem('loggedIn'));
   }
 }

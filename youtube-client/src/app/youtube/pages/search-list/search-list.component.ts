@@ -6,10 +6,8 @@ import {
   distinctUntilChanged,
   map,
   switchMap,
-  Observable,
 } from 'rxjs';
 import { YoutubeApiService } from '../../services/youtube-api.service';
-import { YtItem } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-search-list',
@@ -17,8 +15,6 @@ import { YtItem } from '../../models/search-item.model';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent implements OnInit {
-  items$?: Observable<YtItem[]>;
-
   constructor(
     public filtersService: FiltersService,
     public youtubeApiService: YoutubeApiService,

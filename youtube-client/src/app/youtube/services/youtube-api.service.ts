@@ -26,9 +26,8 @@ export class YoutubeApiService {
     return this.http.get<YtVideoResponse>(URL).pipe(
       map((res) =>
         res.items.reduce((acc: string[], curr) => {
-          const tempAcc = acc;
-          tempAcc.push(curr.id.videoId);
-          return tempAcc;
+          acc.push(curr.id.videoId);
+          return acc;
         }, []),
       ),
       switchMap((idsArr) => this.searchWithStats(idsArr)),
@@ -47,8 +46,8 @@ export class YoutubeApiService {
     return this.http.get<YtResponse>(URL).pipe(
       map((res) => {
         res.items.map((item) => {
-          const tempItem = item;
           const randomDislikes = Math.ceil(Math.random() * 500) + 500;
+          const tempItem = item;
           tempItem.statistics.dislikeCount = `${randomDislikes}`;
           return tempItem;
         });
@@ -76,5 +75,9 @@ export class YoutubeApiService {
 
   onDetails(id: string) {
     this.router.navigate(['main', id]);
+  }
+
+  clearSearchResults() {
+    this.items = [];
   }
 }
