@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -14,11 +14,8 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './log-in-page.component.html',
   styleUrls: ['./log-in-page.component.scss'],
 })
-export class LogInPageComponent {
-  loginForm: FormGroup = this.fb.group({
-    login: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, this.passwordStrengthValidator()]],
-  });
+export class LogInPageComponent implements OnInit {
+  loginForm!: FormGroup;
 
   get login() {
     return this.loginForm.controls['login'];
@@ -29,6 +26,13 @@ export class LogInPageComponent {
   }
 
   constructor(public authService: AuthService, private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      login: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, this.passwordStrengthValidator()]],
+    });
+  }
 
   onLogin() {
     const { login, password } = this.loginForm.value as Record<string, string>;
@@ -46,7 +50,6 @@ export class LogInPageComponent {
       const hasNumbers = /[0-9]+/.test(value);
       const hasSpecialChars = /[!@#?\]_]+/.test(value);
 
-      let errorText = "Your password isn't strong enough, it should have: ";
       const reasons: string[] = [];
 
       /* eslint-disable @typescript-eslint/no-unused-expressions */
@@ -57,7 +60,9 @@ export class LogInPageComponent {
       !hasSpecialChars &&
         reasons.push('at least one special character: ! @ # ? ] _');
 
-      errorText += reasons.join(', ');
+      const errorText = `Your password isn't strong enough, it should have: ${reasons.join(
+        ', ',
+      )}`;
 
       const isValid =
         isLong && hasUppercase && hasLowercase && hasNumbers && hasSpecialChars;

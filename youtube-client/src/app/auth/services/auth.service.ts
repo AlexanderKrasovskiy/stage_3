@@ -30,4 +30,8 @@ export class AuthService {
 
     this.router.navigateByUrl('/auth');
   }
+
+  autologin() {
+    this.isLoggedIn$.next(!!localStorage.getItem('loggedIn'));
+  }
 }
