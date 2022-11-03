@@ -25,10 +25,7 @@ export const adminCardsReducer = createReducer(
       items: [...state.items, payload],
     }),
   ),
-  on(
-    clearAdminCards,
-    (): AdminCardsState => ({ items: [], currentCard: null }),
-  ),
+  on(clearAdminCards, (): AdminCardsState => ({ ...initialState })),
   on(
     searchAdminCardAction,
     (state, { id }): AdminCardsState => ({

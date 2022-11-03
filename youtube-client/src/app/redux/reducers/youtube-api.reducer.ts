@@ -55,21 +55,10 @@ export const apiVideosReducer = createReducer(
   ),
   on(
     ApiActions.loadByIdFailureAction,
-    (state, { error }): YtVideosState => ({
-      ...state,
-      items: [],
+    (_, { error }): YtVideosState => ({
+      ...initialState,
       error,
-      isLoading: false,
-      currentCard: null,
     }),
   ),
-  on(
-    ApiActions.clearApiState,
-    (): YtVideosState => ({
-      items: [],
-      error: '',
-      isLoading: false,
-      currentCard: null,
-    }),
-  ),
+  on(ApiActions.clearApiState, (): YtVideosState => ({ ...initialState })),
 );
