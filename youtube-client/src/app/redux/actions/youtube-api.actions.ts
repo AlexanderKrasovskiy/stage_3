@@ -39,3 +39,7 @@ export const loadByIdFailureAction = createAction(
 );
 
 export const clearApiState = createAction(CLEAR_API_STATE);
+
+const CLEAR_APP_STATE = '[Header Logout] Clear State';
+
+export const clearAppState = createAction(CLEAR_APP_STATE);

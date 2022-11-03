@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { YoutubeApiService } from 'src/app/youtube/services/youtube-api.service';
 import * as ApiActions from '../actions/youtube-api.actions';
+import * as AdminActions from '../actions/admin.actions';
 
 @Injectable()
 export class YoutubeApiEffects {
@@ -39,6 +40,20 @@ export class YoutubeApiEffects {
           ),
         ),
       ),
+    );
+  });
+
+  clearApiState$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ApiActions.clearAppState),
+      map(() => ApiActions.clearApiState()),
+    );
+  });
+
+  clearAdminCards$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ApiActions.clearAppState),
+      map(() => AdminActions.clearAdminCards()),
     );
   });
 

@@ -11,10 +11,9 @@ import {
   tap,
 } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { clearAdminCards } from 'src/app/redux/actions/admin.actions';
 import {
-  clearApiState,
   loadVideosAction,
+  clearAppState,
 } from 'src/app/redux/actions/youtube-api.actions';
 import { FiltersService } from '../../services/filters.service';
 import { UserService } from '../../services/user.service';
@@ -64,9 +63,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLogout() {
     this.authService.onLogout();
     this.searchInput.reset();
-    /* eslint-disable @ngrx/avoid-dispatching-multiple-actions-sequentially */
-    this.store.dispatch(clearAdminCards());
-    this.store.dispatch(clearApiState());
+
+    this.store.dispatch(clearAppState());
   }
 
   toAdmin() {
