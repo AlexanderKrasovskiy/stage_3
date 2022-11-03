@@ -8,6 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { createCardAction } from 'src/app/redux/actions/admin.actions';
+import { Store } from '@ngrx/store';
+import { YtItem } from 'src/app/youtube/models/search-item.model';
 
 @Component({
   selector: 'app-admin-page',
@@ -23,7 +26,7 @@ export class AdminPageComponent {
     description: ['', Validators.maxLength(255)],
     imglink: ['', [Validators.required, this.urlValidator()]],
     videolink: ['', [Validators.required, this.urlValidator()]],
-    date: [null, [Validators.required, this.dateValidator()]],
+    date: ['', [Validators.required, this.dateValidator()]],
   });
 
   get title() {
@@ -46,10 +49,64 @@ export class AdminPageComponent {
     return this.createForm.controls['date'];
   }
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store,
+  ) {}
 
   onCreate() {
+    const cardData = this.generateCardData();
+    this.store.dispatch(createCardAction(cardData));
     this.router.navigate(['']);
+  }
+
+  generateCardData(): YtItem {
+    type AdminCardType = {
+      title: string;
+      description: string;
+      imglink: string;
+      videolink: string;
+      date: string;
+    };
+
+    const { title, description, imglink, date } = this.createForm
+      .value as AdminCardType;
+
+    return {
+      kind: '',
+      etag: '',
+      id: `custom_${Date.now()}`,
+      snippet: {
+        publishedAt: date,
+        channelId: '',
+        title,
+        description,
+        thumbnails: {
+          default: { url: imglink, width: 0, height: 0 },
+          medium: { url: imglink, width: 0, height: 0 },
+          high: { url: imglink, width: 0, height: 0 },
+          standard: { url: imglink, width: 0, height: 0 },
+          maxres: { url: imglink, width: 0, height: 0 },
+        },
+        channelTitle: '',
+        tags: [],
+        categoryId: '',
+        liveBroadcastContent: '',
+        localized: {
+          title,
+          description,
+        },
+        defaultAudioLanguage: '',
+      },
+      statistics: {
+        viewCount: '0',
+        likeCount: '0',
+        dislikeCount: '0',
+        favoriteCount: '0',
+        commentCount: '0',
+      },
+    };
   }
 
   urlValidator(): ValidatorFn {

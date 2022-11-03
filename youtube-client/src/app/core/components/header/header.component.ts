@@ -1,9 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  map,
+  Subscription,
+  tap,
+} from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { YoutubeApiService } from 'src/app/youtube/services/youtube-api.service';
+import {
+  loadVideosAction,
+  clearAppState,
+} from 'src/app/redux/actions/youtube-api.actions';
 import { FiltersService } from '../../services/filters.service';
 import { UserService } from '../../services/user.service';
 
@@ -15,29 +26,34 @@ import { UserService } from '../../services/user.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   authSubscription?: Subscription;
-  searchInput = new FormControl();
+  searchInput = new FormControl('', { nonNullable: true });
 
   constructor(
     private filtersService: FiltersService,
-    public youtubeApiService: YoutubeApiService,
     public userService: UserService,
     public authService: AuthService,
     private router: Router,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
     this.authSubscription = this.authService.isLoggedIn$.subscribe((res) => {
       this.isLoggedIn = res;
     });
+
+    this.searchInput.valueChanges
+      .pipe(
+        filter((query) => query.length >= 3),
+        debounceTime(700),
+        distinctUntilChanged(),
+        map((query) => query.toLowerCase()),
+        tap((query) => this.store.dispatch(loadVideosAction({ query }))),
+      )
+      .subscribe();
   }
 
   ngOnDestroy(): void {
     this.authSubscription?.unsubscribe();
-  }
-
-  onInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.youtubeApiService.searchText$.next(target.value);
   }
 
   toggleFilters(): void {
@@ -47,7 +63,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLogout() {
     this.authService.onLogout();
     this.searchInput.reset();
-    this.youtubeApiService.clearSearchResults();
+
+    this.store.dispatch(clearAppState());
   }
 
   toAdmin() {

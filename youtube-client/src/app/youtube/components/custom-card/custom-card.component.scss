@@ -1,0 +1,30 @@
+.mat-card {
+  background-color: #e5e5e5;
+  flex-basis: 25%;
+  max-width: 263px;
+}
+
+.img-container {
+  width: 295px;
+  height: 165.938px;
+  max-width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.mat-card-title {
+  text-align: center;
+  height: 60px;
+  overflow: hidden;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.mat-card-footer {
+  height: 5px;
+}

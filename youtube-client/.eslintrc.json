@@ -48,7 +48,19 @@
       "excludedFiles": ["*inline-template-*.component.html"],
       "extends": ["plugin:prettier/recommended"],
       "rules": {
-        "prettier/prettier": ["error", { "parser": "angular" }]
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@ngrx/recommended"],
+      "rules": {
+        "@ngrx/no-typed-global-store": "off"
       }
     }
   ]
