@@ -1,15 +1,15 @@
-import { Directive, OnInit, Input, HostBinding } from '@angular/core';
+import { Directive, OnChanges, Input, HostBinding } from '@angular/core';
 import { CardBottomBorderColors, DAY_IN_MS } from '../../shared/constants';
 
 @Directive({
   selector: '[appBackgroundHighlight]',
 })
-export class BackgroundHighlightDirective implements OnInit {
+export class BackgroundHighlightDirective implements OnChanges {
   @Input() dateOfPublishing?: string;
   private color?: CardBottomBorderColors;
   @HostBinding('style.backgroundColor') backgroundColor?: string;
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.resolveBottomColor();
 
     this.backgroundColor = this.color;

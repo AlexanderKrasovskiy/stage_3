@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { searchAdminCardAction } from 'src/app/redux/actions/admin.actions';
 import { selectCurrentCustomCard } from 'src/app/redux/selectors/admin.selectors';
@@ -15,8 +15,9 @@ import { YtItem } from '../../models/search-item.model';
   templateUrl: './details-page.component.html',
   styleUrls: ['./details-page.component.scss'],
 })
-export class DetailsPageComponent implements OnInit {
+export class DetailsPageComponent implements OnInit, OnDestroy {
   item$!: Observable<YtItem | null>;
+  routeSubscription?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,19 +28,24 @@ export class DetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.filtersService.isVisible = false;
-    const id = this.route.snapshot.params['id'] as string;
-    const idType = id.slice(0, 6);
+    this.routeSubscription = this.route.params.subscribe(({ id }) => {
+      const idType = id.slice(0, 6);
 
-    if (idType === 'custom') {
-      this.store.dispatch(searchAdminCardAction({ id }));
-      this.item$ = this.store.select(selectCurrentCustomCard);
-    } else {
-      this.store.dispatch(loadByIdAction({ id }));
-      this.item$ = this.store.select(selectCurrentApiCard);
-    }
+      if (idType === 'custom') {
+        this.store.dispatch(searchAdminCardAction({ id }));
+        this.item$ = this.store.select(selectCurrentCustomCard);
+      } else {
+        this.store.dispatch(loadByIdAction({ id }));
+        this.item$ = this.store.select(selectCurrentApiCard);
+      }
+    });
   }
 
   goBack(): void {
     this.router.navigate(['']);
+  }
+
+  ngOnDestroy(): void {
+    this.routeSubscription?.unsubscribe();
   }
 }
