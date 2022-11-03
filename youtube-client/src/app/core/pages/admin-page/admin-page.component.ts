@@ -70,30 +70,32 @@ export class AdminPageComponent {
       date: string;
     };
 
-    const formValues = this.createForm.value as AdminCardType;
+    const { title, description, imglink, date } = this.createForm
+      .value as AdminCardType;
+
     return {
       kind: '',
       etag: '',
       id: `custom_${Date.now()}`,
       snippet: {
-        publishedAt: formValues.date,
+        publishedAt: date,
         channelId: '',
-        title: formValues.title,
-        description: formValues.description,
+        title,
+        description,
         thumbnails: {
-          default: { url: formValues.imglink, width: 0, height: 0 },
-          medium: { url: formValues.imglink, width: 0, height: 0 },
-          high: { url: formValues.imglink, width: 0, height: 0 },
-          standard: { url: formValues.imglink, width: 0, height: 0 },
-          maxres: { url: formValues.imglink, width: 0, height: 0 },
+          default: { url: imglink, width: 0, height: 0 },
+          medium: { url: imglink, width: 0, height: 0 },
+          high: { url: imglink, width: 0, height: 0 },
+          standard: { url: imglink, width: 0, height: 0 },
+          maxres: { url: imglink, width: 0, height: 0 },
         },
         channelTitle: '',
         tags: [],
         categoryId: '',
         liveBroadcastContent: '',
         localized: {
-          title: formValues.title,
-          description: formValues.description,
+          title,
+          description,
         },
         defaultAudioLanguage: '',
       },
